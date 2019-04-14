@@ -1,0 +1,45 @@
+/* Button Styling */
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+  top: 5rem;
+}
+
+.btn {
+  flex: 0 0 40%;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 1rem;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+  transition: all 0.5s ease-in;
+  font-size: 2rem;
+
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: rgb(224, 224, 224);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+/* standings styling */
+
+.standings-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  padding: 15px;
+  margin: 8rem auto;
+
+  overflow: hidden;
+  animation: fade-in 0.3s ease-in-out;
+}
