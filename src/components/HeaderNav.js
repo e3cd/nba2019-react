@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import "./HeaderNav.css";
 
 class HeaderNav extends Component {
+  state = {};
+
   render() {
     return (
-      <nav>
-        <div className="nav-title">2018-2019 NBA SEASON</div>
+      <nav className="nav">
+        <div className="nav-title">2019 NBA SEASON STATS</div>
         <ul className="nav-list">
           <Link to="/" style={{ textDecoration: "none" }} className="nav-item">
             <li className="nav-link">Standings</li>

@@ -2,6 +2,10 @@
   position: fixed;
 } */
 
+/* .nav {
+  position: fixed;
+} */
+
 .nav-title {
   text-align: center;
   font-weight: 700;
@@ -27,7 +31,7 @@
   background-color: rgb(20, 101, 192);
   box-shadow: 4px 4px 5px 0 rgba(0, 0, 0, 0.28);
   height: 100%;
-  padding: 1rem;
+  padding: 2rem;
   transition: all 0.5s ease-in;
   font-weight: 700;
   font-size: 2rem;

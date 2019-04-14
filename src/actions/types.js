@@ -1,0 +1,1 @@
+export const FETCH_STANDINGS = "FETCH_STANDINGS";
