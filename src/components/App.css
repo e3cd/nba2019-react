@@ -41,4 +41,5 @@ body {
   background-color: rgb(255, 255, 255);
   box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
   min-height: 50rem;
+  overflow: hidden;
 }

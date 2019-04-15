@@ -1,19 +1,19 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
 import HeaderNav from "./HeaderNav";
 import PlayerStats from "./players/PlayerStats";
 import PlayerSearch from "./players/PlayerSearch";
 import StandingsPage from "./standings/StandingsPage";
 import TeamsList from "./teams/TeamsList";
 import TeamStats from "./teams/TeamStats";
+import history from "../history";
 
 import "./App.css";
-import { Grid } from "semantic-ui-react";
 
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <HeaderNav />
         <div className="app-container">
           <Switch>
@@ -24,7 +24,7 @@ class App extends Component {
             <Route path="/teams/:id" exact component={TeamStats} />
           </Switch>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
