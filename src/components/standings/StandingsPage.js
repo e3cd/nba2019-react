@@ -65,21 +65,17 @@ class StandingsPage extends Component {
         </li>
         {conference
           ? conference.map((team, ind) => {
-              let background = {};
-              if (ind % 2 === 0) {
-                background = {
-                  background: `#00000010`
-                };
-              }
-
               let teamLogo = this.getTeamName(team.teamId).tricode;
               let imgSrc = endpointConstants.TEAM_LOGO(teamLogo);
 
               return (
                 <li
                   key={team.teamId}
-                  style={background}
-                  className="standings-item"
+                  className={
+                    ind % 2 === 0
+                      ? `standings-item standings-second`
+                      : `standings-item`
+                  }
                 >
                   <label>{ind + 1}</label>
                   <label className="standings-team">

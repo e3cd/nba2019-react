@@ -1,8 +1,13 @@
 import React, { Component } from "react";
+import PlayerSearchButton from "./PlayerSearchButton";
 
 class PlayerSearch extends Component {
   render() {
-    return <div>PlayerSearch</div>;
+    return (
+      <div>
+        <PlayerSearchButton />
+      </div>
+    );
   }
 }
 

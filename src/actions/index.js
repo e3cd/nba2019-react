@@ -3,7 +3,9 @@ import { endpointConstants } from "./../api/endpoints";
 import {
   FETCH_EAST_STANDINGS,
   FETCH_WEST_STANDINGS,
-  FETCH_TEAMS
+  FETCH_TEAMS,
+  FETCH_PLAYERS,
+  FETCH_PLAYER_STATS
 } from "./types";
 
 export const fetchTeams = () => async dispatch => {
@@ -35,5 +37,28 @@ export const fetchWestStandings = () => async dispatch => {
   dispatch({
     type: FETCH_WEST_STANDINGS,
     payload: response.data.league.standard.conference.west
+  });
+};
+
+export const fetchPlayers = () => async dispatch => {
+  const getPlayers = endpointConstants.FETCH_PLAYERS;
+  const response = await stats.get(getPlayers);
+  // console.log(response.data.league.standard);
+
+  dispatch({
+    type: FETCH_PLAYERS,
+    payload: response.data.league.standard
+  });
+};
+
+export const fetchPlayerStats = personId => async dispatch => {
+  const getPlayerStats = endpointConstants.FETCH_PLAYER_STATS(personId);
+
+  const response = await stats.get(getPlayerStats);
+  console.log(response.data.league.standard.stats.regularSeason);
+
+  dispatch({
+    type: FETCH_PLAYER_STATS,
+    payload: response.data.league.standard.stats.regularSeason
   });
 };

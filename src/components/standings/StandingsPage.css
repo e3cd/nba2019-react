@@ -67,7 +67,7 @@
   display: grid;
   align-content: center;
   grid-template-columns:
-    [rank-start] minmax(2rem, 4rem) [rank-end team-start] minmax(14rem, 1fr)
+    [rank-start] minmax(2rem, 4rem) [rank-end team-start] minmax(10rem, 1fr)
     [team-end category-start] repeat(
       5,
       [col-start] minmax(2rem, 8rem) [col-end]
@@ -87,4 +87,8 @@
 .standings-logo {
   height: 3rem;
   width: 3rem;
+}
+
+.standings-second {
+  background: rgb(224, 224, 224);
 }
