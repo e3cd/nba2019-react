@@ -33,8 +33,12 @@
   top: 1.5rem;
   padding: 4rem;
   margin: 8rem;
-  border: 1px solid rgba(0, 0, 0, 0.23);
 
   overflow: hidden;
-  animation: fade-in 0.3s ease-in-out;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(10rem, 1fr));
+  grid-gap: 2rem;
+  align-items: center;
+  text-align: center;
 }
