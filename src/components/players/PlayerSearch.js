@@ -8,8 +8,9 @@ class PlayerSearch extends Component {
     this.props.fetchPlayers();
     this.props.fetchTeams();
   }
+
   render() {
-    // console.log(this.props.players);
+    // console.log(this.getNbaTeams(this.props.teams));
     return (
       <PlayerSearchButton
         getPlayers={this.props.players}

@@ -13,7 +13,12 @@ export const fetchTeams = () => async dispatch => {
   const response = await stats.get(getTeams);
   //   console.log(response.data.league.standard);
 
-  dispatch({ type: FETCH_TEAMS, payload: response.data.league.standard });
+  dispatch({
+    type: FETCH_TEAMS,
+    payload: response.data.league.standard.filter(
+      team => team.isNBAFranchise === true
+    )
+  });
 };
 
 export const fetchEastStandings = () => async dispatch => {
@@ -47,7 +52,9 @@ export const fetchPlayers = () => async dispatch => {
 
   dispatch({
     type: FETCH_PLAYERS,
-    payload: response.data.league.standard
+    payload: response.data.league.standard.filter(
+      player => player.isActive === true
+    )
   });
 };
 
