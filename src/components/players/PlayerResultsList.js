@@ -11,27 +11,44 @@ class PlayerResultsList extends Component {
   renderFilteredList = list => {
     return list
       ? list.map(player => {
-          let teamLogo = this.getTeamName(player.teamId).tricode;
-          let imgSrc = endpointConstants.TEAM_LOGO(teamLogo);
+          const teamName = this.getTeamName(player.teamId).fullName;
+          const teamLogo = this.getTeamName(player.teamId).tricode;
+          const logoImg = endpointConstants.TEAM_LOGO(teamLogo);
+          const playerImg = endpointConstants.FETCH_PLAYER_HEADSHOT(
+            player.personId
+          );
+
+          const playerImageStyle = {
+            backgroundImage: `linear-gradient(
+                rgba(252,252,252,0.6),
+                rgb(254, 254, 254,0.7)
+              ), url(${logoImg}) `,
+            maxWidth: "100%",
+            height: "auto",
+            backgroundSize: "cover",
+            backgroundPosition: "center"
+          };
 
           return (
-            <div className="player-cards-container">
-              <ul className="player-card">
-                <li key={player.personId}>
-                  <img
-                    src={endpointConstants.FETCH_PLAYER_HEADSHOT(
-                      player.personId
-                    )}
-                    alt="player"
-                    className="player-card-image"
-                  />
-                </li>
-                <li>{player.fullName}</li>
+            <div>
+              <div className="player-cards-container">
+                <img
+                  src={playerImg}
+                  alt="player"
+                  className="player-image"
+                  style={playerImageStyle}
+                />
 
-                <li>
-                  <img src={imgSrc} alt="team logo" />
-                </li>
-              </ul>
+                <div className="player-label">
+                  <div className="player-name">{player.fullName}</div>
+                  <div className="player-sublabel">
+                    <div>
+                      <img src={logoImg} alt="logo" className="team-logo" />
+                    </div>
+                    <div className="team-name">{teamName}</div>
+                  </div>
+                </div>
+              </div>
             </div>
           );
         })
@@ -39,26 +56,18 @@ class PlayerResultsList extends Component {
   };
 
   render() {
-    //make new teams and player objects from props to remove the SCRUB players and non-nba teams
+    //make new teams and player objects from actions to remove the SCRUB players and non-nba teams
 
     const players = this.props.getPlayers;
     console.log(players);
+    console.log(this.props.getTeams);
 
+    //make a new array with fullName of each player
     const newPlayers = !players
       ? []
       : players.forEach(
           player => (player.fullName = player.firstName + " " + player.lastName)
         );
-
-    // console.log(newPlayers);
-
-    const teams = this.props.getTeams;
-    console.log(teams);
-
-    const newTeams = !teams
-      ? []
-      : teams.filter(team => team.isNBAFranchise === true);
-    console.log(newTeams);
 
     const searchTerm = this.props.searchTerm;
     // console.log(players);
@@ -78,78 +87,12 @@ class PlayerResultsList extends Component {
     // let teamLogo = this.getTeamName(team.teamId).tricode;
     // let imgSrc = endpointConstants.TEAM_LOGO(teamLogo);
 
-    return <div>{this.renderFilteredList(filteredPlayers)}</div>;
+    return (
+      <div className="results-container">
+        {this.renderFilteredList(filteredPlayers)}
+      </div>
+    );
   }
 }
 
 export default PlayerResultsList;
-
-// import React, { Component } from "react";
-// import { endpointConstants } from "./../../api/endpoints";
-// import "./PlayerResultsList.css";
-
-// class PlayerResultsList extends Component {
-//   getTeamName = teamId => {
-//     // console.log(this.props.teams);
-//     return this.props.getTeams.find(team => team.teamId === teamId);
-//   };
-
-//   render() {
-//     const players = this.props.getPlayers;
-
-//     const newPlayers = !players
-//       ? []
-//       : players.forEach(
-//           player => (player.fullName = player.firstName + " " + player.lastName)
-//         );
-
-//     // console.log(newPlayers);
-
-//     // console.log(this.props.getTeams);
-
-//     const searchTerm = this.props.searchTerm;
-//     // console.log(players);
-//     // console.log(this.props.getTeams);
-
-//     const search = (list, term) =>
-//       searchTerm.length < 2
-//         ? []
-//         : list.filter(player =>
-//             player.fullName.toLowerCase().includes(term.toLowerCase())
-//           );
-
-//     const filteredPlayers = search(players, searchTerm);
-
-//     console.log(filteredPlayers);
-
-//     return filteredPlayers.map(({ fullName, personId, teamId }) => (
-//       <div className="player-cards-container">
-//         <ul className="player-card">
-//           <li key={personId}>
-//             <img
-//               src={endpointConstants.FETCH_PLAYER_HEADSHOT(personId)}
-//               alt="player"
-//               className="player-card-image"
-//             />
-//           </li>
-//           <li>{fullName}</li>
-
-//           <li>
-//             <img
-//               src={
-//                 this.props.teams
-//                   ? endpointConstants.TEAM_LOGO(
-//                       this.getTeamName(teamId).tricode
-//                     )
-//                   : null
-//               }
-//               alt="team logo"
-//             />
-//           </li>
-//         </ul>
-//       </div>
-//     ));
-//   }
-// }
-
-// export default PlayerResultsList;

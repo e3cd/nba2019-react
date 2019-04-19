@@ -27,13 +27,12 @@ class PlayerSearchButton extends Component {
             value={this.state.searchInput}
           />
         </div>
-        <div className="results-container">
-          <PlayerResultsList
-            getPlayers={this.props.getPlayers}
-            searchTerm={this.state.searchInput}
-            getTeams={this.props.getTeams}
-          />
-        </div>
+
+        <PlayerResultsList
+          getPlayers={this.props.getPlayers}
+          searchTerm={this.state.searchInput}
+          getTeams={this.props.getTeams}
+        />
       </div>
     );
   }

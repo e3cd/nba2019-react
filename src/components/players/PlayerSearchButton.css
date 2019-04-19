@@ -26,19 +26,3 @@
   font-weight: 30;
   color: rgb(212, 212, 212);
 }
-
-.results-container {
-  position: relative;
-
-  top: 1.5rem;
-  padding: 4rem;
-  margin: 8rem;
-
-  overflow: hidden;
-
-  display: grid;
-  grid-template-columns: repeat(4, minmax(10rem, 1fr));
-  grid-gap: 2rem;
-  align-items: center;
-  text-align: center;
-}
