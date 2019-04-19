@@ -1,0 +1,59 @@
+.results-container {
+  position: relative;
+
+  top: 1.5rem;
+  padding: 2rem;
+  margin: 8rem;
+
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(15rem, 1fr));
+  grid-gap: 2rem;
+  align-items: center;
+  text-align: center;
+}
+
+.player-cards-container {
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0.4rem 0.5rem;
+  border-radius: 3px;
+  transition: all 0.3s ease-in;
+  font-size: 2rem;
+
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1.25fr 1.5fr;
+  align-items: center;
+  max-width: 100%;
+}
+
+.player-cards-container:hover {
+  transform: translateY(-0.7rem) scale(1);
+}
+
+.player-label {
+  list-style: none;
+}
+
+.player-name {
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.player-sublabel {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.team-logo {
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+.team-name {
+  margin-top: 1rem;
+}
