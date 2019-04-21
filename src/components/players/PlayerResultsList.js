@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { endpointConstants } from "./../../api/endpoints";
+import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 import "./PlayerResultsList.css";
 
 class PlayerResultsList extends Component {
@@ -29,12 +31,14 @@ class PlayerResultsList extends Component {
             backgroundPosition: "center"
           };
 
+          const playerStatsUrl = `players/${player.personId}`;
+
           return (
-            <div>
+            <Link to={playerStatsUrl} className="player-link">
               <div className="player-cards-container">
                 <img
                   src={playerImg}
-                  alt="player"
+                  alt="scrub"
                   className="player-image"
                   style={playerImageStyle}
                 />
@@ -49,7 +53,7 @@ class PlayerResultsList extends Component {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           );
         })
       : null;
@@ -59,8 +63,8 @@ class PlayerResultsList extends Component {
     //make new teams and player objects from actions to remove the SCRUB players and non-nba teams
 
     const players = this.props.getPlayers;
-    console.log(players);
-    console.log(this.props.getTeams);
+    // console.log(players);
+    // console.log(this.props.getTeams);
 
     //make a new array with fullName of each player
     const newPlayers = !players
@@ -82,7 +86,7 @@ class PlayerResultsList extends Component {
 
     //use players instead of newPlayers for some reason
     const filteredPlayers = search(players, searchTerm);
-    console.log(filteredPlayers);
+    // console.log(filteredPlayers);
 
     // let teamLogo = this.getTeamName(team.teamId).tricode;
     // let imgSrc = endpointConstants.TEAM_LOGO(teamLogo);
@@ -95,4 +99,4 @@ class PlayerResultsList extends Component {
   }
 }
 
-export default PlayerResultsList;
+export default withRouter(PlayerResultsList);
