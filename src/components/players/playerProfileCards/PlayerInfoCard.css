@@ -1,0 +1,23 @@
+.info-card {
+  border: 1px solid red;
+  margin-top: 4rem;
+
+  text-align: center;
+}
+
+.info-image {
+  display: flex;
+  justify-content: center;
+}
+
+.info-label {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.info-list {
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+}

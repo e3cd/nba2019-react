@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { fetchPlayerStats, fetchPlayers, fetchTeams } from "../../actions";
 import { connect } from "react-redux";
-import PlayerInfo from "./playerStatsCards/PlayerInfo";
-import PlayerStatCard from "./playerStatsCards/PlayerStatCard";
+import PlayerInfoCard from "./playerProfileCards/PlayerInfoCard";
+import PlayerStatCard from "./playerProfileCards/PlayerStatCard";
+
+import "./PlayerProfile.css";
 
 class PlayerProfile extends Component {
   componentDidMount() {
@@ -27,20 +29,18 @@ class PlayerProfile extends Component {
   };
 
   render() {
-    // console.log(this.props.players);
-    // console.log(this.props.playerStats);
     // //get last Player stats from redux state using pop
     const lastPlayerStats = this.props.playerStats.pop();
-    // console.log(lastPlayerStats);
-    // console.log(this.props.match.params.id);
+
     const searchedPlayerProfile = this.getPlayerProfile(
       this.props.match.params.id
     );
-    // console.log(searchedPlayerProfile);
+
+    const listOfTeams = this.props.teams;
 
     return (
-      <div>
-        <PlayerInfo info={searchedPlayerProfile} />
+      <div className="profile-container">
+        <PlayerInfoCard info={searchedPlayerProfile} teams={listOfTeams} />
         <PlayerStatCard stats={lastPlayerStats} />
       </div>
     );
