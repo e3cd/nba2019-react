@@ -12,10 +12,12 @@ class PlayerSearch extends Component {
   render() {
     // console.log(this.getNbaTeams(this.props.teams));
     return (
-      <PlayerSearchButton
-        getPlayers={this.props.players}
-        getTeams={this.props.teams}
-      />
+      <div>
+        <PlayerSearchButton
+          getPlayers={this.props.players}
+          getTeams={this.props.teams}
+        />
+      </div>
     );
   }
 }
