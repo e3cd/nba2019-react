@@ -30,7 +30,7 @@ class PlayerInfoCard extends Component {
     return list.draft.teamId === ""
       ? `Undrafted`
       : list.draft.seasonYear +
-          ": Round " +
+          " Round " +
           list.draft.roundNum +
           " - Pick " +
           list.draft.pickNum +
@@ -86,7 +86,7 @@ class PlayerInfoCard extends Component {
               <b>{this.prevAffiliation(list)}:</b>
             </li>
             <li>
-              <b>Draft Info</b>
+              <b>Draft Info:</b>
             </li>
           </ul>
           <ul style={{ listStyle: "none" }}>
@@ -106,8 +106,8 @@ class PlayerInfoCard extends Component {
   render() {
     // console.log(this.props.info);
     const info = this.props.info;
-    console.log(info);
-    console.log(this.props.teams);
+    // console.log(info);
+    // console.log(this.props.teams);
     return <div>{this.renderInfo(info)}</div>;
   }
 }

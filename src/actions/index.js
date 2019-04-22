@@ -62,7 +62,7 @@ export const fetchPlayerStats = personId => async dispatch => {
   const getPlayerStats = endpointConstants.FETCH_PLAYER_STATS(personId);
 
   const response = await stats.get(getPlayerStats);
-  // console.log(response.data.league.standard.stats);
+  // console.log(response.data.league.standard.stats.careerSummary);
 
   dispatch({
     type: FETCH_PLAYER_STATS,

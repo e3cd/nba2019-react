@@ -31,6 +31,7 @@ class PlayerProfile extends Component {
   render() {
     // //get last Player stats from redux state using pop
     const lastPlayerStats = this.props.playerStats.pop();
+    // console.log(lastPlayerStats.careerSummary);
 
     const searchedPlayerProfile = this.getPlayerProfile(
       this.props.match.params.id
@@ -41,7 +42,9 @@ class PlayerProfile extends Component {
     return (
       <div className="profile-container">
         <PlayerInfoCard info={searchedPlayerProfile} teams={listOfTeams} />
-        <PlayerStatCard stats={lastPlayerStats} />
+        {lastPlayerStats !== undefined ? (
+          <PlayerStatCard stats={lastPlayerStats} />
+        ) : null}
       </div>
     );
   }
