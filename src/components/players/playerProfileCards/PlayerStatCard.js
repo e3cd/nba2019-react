@@ -72,9 +72,43 @@ class PlayerStatCard extends Component {
   };
 
   renderCareerStats = list => {
+    return list
+      .slice(0)
+      .reverse()
+      .map(season => {
+        return (
+          <ul style={{ listStyle: "none" }}>
+            <li>
+              <b>{season.seasonYear}</b>
+            </li>
+            <li>{season.teams[0].gamesPlayed}</li>
+            <li>{season.teams[0].gamesStarted}</li>
+            <li>{season.teams[0].ppg}</li>
+            <li>{season.teams[0].rpg}</li>
+            <li>{season.teams[0].apg}</li>
+            <li>{season.teams[0].fgp}</li>
+            <li>{season.teams[0].ftp}</li>
+            <li>{season.teams[0].spg}</li>
+            <li>{season.teams[0].bpg}</li>
+            <li>
+              {Math.round(
+                (season.teams[0].turnovers / season.teams[0].gamesPlayed) * 100
+              ) / 100}
+            </li>
+            <li>{season.teams[0].mpg}</li>
+            <li>{season.teams[0].dd2}</li>
+            <li>{season.teams[0].td3}</li>
+          </ul>
+        );
+      });
+  };
+
+  renderCareerTotals = list => {
     return (
       <ul style={{ listStyle: "none" }}>
-        <li>&nbsp;</li>
+        <li>
+          <b>Career</b>
+        </li>
         <li>{list.gamesPlayed}</li>
         <li>{list.gamesStarted}</li>
         <li>{list.ppg}</li>
@@ -94,8 +128,13 @@ class PlayerStatCard extends Component {
 
   render() {
     const seasonStats = this.props.stats.regularSeason.season[0].teams;
+    const allSeasonStats = this.props.stats.regularSeason.season;
 
-    const careerStats = this.props.stats.careerSummary;
+    const careerTotals = this.props.stats.careerSummary;
+
+    console.log(seasonStats);
+    console.log(careerTotals);
+    console.log(allSeasonStats);
     return (
       <div className="stat-card">
         <div className="stat-btn-container">
@@ -157,7 +196,10 @@ class PlayerStatCard extends Component {
           </ul>
           {this.state.season
             ? this.renderSeasonStats(seasonStats)
-            : this.renderCareerStats(careerStats)}
+            : [
+                this.renderCareerStats(allSeasonStats),
+                this.renderCareerTotals(careerTotals)
+              ]}
         </div>
       </div>
     );
