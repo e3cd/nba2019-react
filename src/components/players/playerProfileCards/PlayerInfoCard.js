@@ -44,7 +44,7 @@ class PlayerInfoCard extends Component {
   renderInfo = list => {
     return list ? (
       <div className="info-card">
-        <h1>{list.firstName + " " + list.lastName}</h1>
+        <h1 className="info-title">{list.firstName + " " + list.lastName}</h1>
         <div className="info-image">
           <img
             src={endpointConstants.FETCH_PLAYER_HEADSHOT(list.personId)}

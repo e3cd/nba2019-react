@@ -18,80 +18,123 @@ class PlayerStatCard extends Component {
     });
   };
 
-  renderStatsList = list => {
-    return list ? (
-      <div className="stat-list">
-        <ul style={{ listStyle: "none" }}>
-          <li>
-            <b>Games Played:</b>
-          </li>
-          <li>
-            <b>Games Started:</b>
-          </li>
-          <li>
-            <b>Points Per Game:</b>
-          </li>
-          <li>
-            <b>Rebounds Per Game:</b>
-          </li>
-          <li>
-            <b>Assists Per Game:</b>
-          </li>
-          <li>
-            <b>Field Goal Percentage:</b>
-          </li>
-          <li>
-            <b>Free Throw Percentage:</b>
-          </li>
-          <li>
-            <b>Steals Per Game:</b>
-          </li>
-          <li>
-            <b>Blocks Per Game:</b>
-          </li>
-          <li>
-            <b>Turnovers Per Game:</b>
-          </li>
-          <li>
-            <b>Minutes Per Game:</b>
-          </li>
-          <li>
-            <b>Double Doubles:</b>
-          </li>
-          <li>
-            <b>Triple Doubles:</b>
-          </li>
-        </ul>
-        <ul style={{ listStyle: "none" }}>
-          <li>{list.gamesPlayed}</li>
-          <li>{list.gamesStarted}</li>
-          <li>{list.ppg}</li>
-          <li>{list.rpg}</li>
-          <li>{list.apg}</li>
-          <li>{list.fgp}</li>
-          <li>{list.ftp}</li>
-          <li>{list.spg}</li>
-          <li>{list.bpg}</li>
-          <li>{Math.round((list.turnovers / list.gamesPlayed) * 100) / 100}</li>
-          <li>{list.mpg}</li>
-          <li>{list.dd2}</li>
-          <li>{list.td3}</li>
-        </ul>
-      </div>
-    ) : null;
+  getTeamName = teamId => {
+    return this.props.teams.find(team => team.teamId === teamId);
+  };
+
+  renderSeasonStats = list => {
+    return list.length > 1 ? (
+      list.map(team => {
+        return (
+          <ul style={{ listStyle: "none" }}>
+            <li>
+              <b>{this.getTeamName(team.teamId).tricode}</b>
+            </li>
+            <li>{team.gamesPlayed}</li>
+            <li>{team.gamesStarted}</li>
+            <li>{team.ppg}</li>
+            <li>{team.rpg}</li>
+            <li>{team.apg}</li>
+            <li>{team.fgp}</li>
+            <li>{team.ftp}</li>
+            <li>{team.spg}</li>
+            <li>{team.bpg}</li>
+            <li>
+              {Math.round((team.turnovers / team.gamesPlayed) * 100) / 100}
+            </li>
+            <li>{team.mpg}</li>
+            <li>{team.dd2}</li>
+            <li>{team.td3}</li>
+          </ul>
+        );
+      })
+    ) : (
+      <ul style={{ listStyle: "none" }}>
+        <li>&nbsp;</li>
+
+        <li>{list[0].gamesPlayed}</li>
+        <li>{list[0].gamesStarted}</li>
+        <li>{list[0].ppg}</li>
+        <li>{list[0].rpg}</li>
+        <li>{list[0].apg}</li>
+        <li>{list[0].fgp}</li>
+        <li>{list[0].ftp}</li>
+        <li>{list[0].spg}</li>
+        <li>{list[0].bpg}</li>
+        <li>
+          {Math.round((list[0].turnovers / list[0].gamesPlayed) * 100) / 100}
+        </li>
+        <li>{list[0].mpg}</li>
+        <li>{list[0].dd2}</li>
+        <li>{list[0].td3}</li>
+      </ul>
+    );
+  };
+
+  renderCareerStats = list => {
+    return list
+      .slice(0)
+      .reverse()
+      .map(season => {
+        return (
+          <ul style={{ listStyle: "none" }}>
+            <li>
+              <b>{season.seasonYear}</b>
+            </li>
+            <li>{season.teams[0].gamesPlayed}</li>
+            <li>{season.teams[0].gamesStarted}</li>
+            <li>{season.teams[0].ppg}</li>
+            <li>{season.teams[0].rpg}</li>
+            <li>{season.teams[0].apg}</li>
+            <li>{season.teams[0].fgp}</li>
+            <li>{season.teams[0].ftp}</li>
+            <li>{season.teams[0].spg}</li>
+            <li>{season.teams[0].bpg}</li>
+            <li>
+              {Math.round(
+                (season.teams[0].turnovers / season.teams[0].gamesPlayed) * 100
+              ) / 100}
+            </li>
+            <li>{season.teams[0].mpg}</li>
+            <li>{season.teams[0].dd2}</li>
+            <li>{season.teams[0].td3}</li>
+          </ul>
+        );
+      });
+  };
+
+  renderCareerTotals = list => {
+    return (
+      <ul style={{ listStyle: "none" }}>
+        <li>
+          <b>Career</b>
+        </li>
+        <li>{list.gamesPlayed}</li>
+        <li>{list.gamesStarted}</li>
+        <li>{list.ppg}</li>
+        <li>{list.rpg}</li>
+        <li>{list.apg}</li>
+        <li>{list.fgp}</li>
+        <li>{list.ftp}</li>
+        <li>{list.spg}</li>
+        <li>{list.bpg}</li>
+        <li>{Math.round((list.turnovers / list.gamesPlayed) * 100) / 100}</li>
+        <li>{list.mpg}</li>
+        <li>{list.dd2}</li>
+        <li>{list.td3}</li>
+      </ul>
+    );
   };
 
   render() {
-    // console.log(this.props.stats.regularSeason.season[0].teams[0]);
-    // console.log(this.props.stats.careerSummary);
-    const seasonStats = this.props.stats.regularSeason.season[0].teams[0];
-    const careerStats = this.props.stats.careerSummary;
+    const seasonStats = this.props.stats.regularSeason.season[0].teams;
+    const allSeasonStats = this.props.stats.regularSeason.season;
 
-    // console.log(seasonStats);
-    console.log(careerStats);
-    // console.log(this.props.stats);
-    // const regularSeason = this.props.stats.regularSeason
-    // console.log(this.props.stats.regularSeason.season[0]);
+    const careerTotals = this.props.stats.careerSummary;
+
+    console.log(seasonStats);
+    console.log(careerTotals);
+    console.log(allSeasonStats);
     return (
       <div className="stat-card">
         <div className="stat-btn-container">
@@ -108,9 +151,56 @@ class PlayerStatCard extends Component {
             Career
           </button>
         </div>
-        {this.state.season
-          ? this.renderStatsList(seasonStats)
-          : this.renderStatsList(careerStats)}
+        <div className="stat-list">
+          <ul style={{ listStyle: "none" }}>
+            <li>&nbsp;</li>
+            <li>
+              <b>Games Played:</b>
+            </li>
+            <li>
+              <b>Games Started:</b>
+            </li>
+            <li>
+              <b>Points Per Game:</b>
+            </li>
+            <li>
+              <b>Rebounds Per Game:</b>
+            </li>
+            <li>
+              <b>Assists Per Game:</b>
+            </li>
+            <li>
+              <b>Field Goal Percentage:</b>
+            </li>
+            <li>
+              <b>Free Throw Percentage:</b>
+            </li>
+            <li>
+              <b>Steals Per Game:</b>
+            </li>
+            <li>
+              <b>Blocks Per Game:</b>
+            </li>
+            <li>
+              <b>Turnovers Per Game:</b>
+            </li>
+            <li>
+              <b>Minutes Per Game:</b>
+            </li>
+            <li>
+              <b>Double Doubles:</b>
+            </li>
+            <li>
+              <b>Triple Doubles:</b>
+            </li>
+          </ul>
+          {this.state.season
+            ? this.renderSeasonStats(seasonStats)
+            : [
+                this.renderCareerStats(allSeasonStats),
+                this.renderCareerTotals(careerTotals)
+              ]}
+        </div>
       </div>
     );
   }
