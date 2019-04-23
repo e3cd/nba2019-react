@@ -1,0 +1,32 @@
+.info-card {
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0.4rem 0.5rem;
+  border-radius: 3px;
+  margin-top: 4rem;
+
+  text-align: center;
+}
+
+.info-title {
+  font-size: 3.25rem;
+  margin: 1.5rem;
+}
+
+.info-image {
+  display: flex;
+  justify-content: center;
+}
+
+.info-label {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1.25rem;
+  margin: 2rem;
+}
+
+.info-list {
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+}

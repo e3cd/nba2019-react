@@ -1,0 +1,94 @@
+/* Button Styling */
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+  top: 5rem;
+}
+
+.btn {
+  flex: 0 0 40%;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 1rem;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+  transition: all 0.3s ease-in;
+  font-size: 2rem;
+
+  cursor: pointer;
+}
+
+.btn-active {
+  flex: 0 0 40%;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 1rem;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+  transition: all 0.3s ease-in;
+  font-size: 2rem;
+  background: rgb(224, 224, 224);
+
+  cursor: pointer;
+}
+
+.btn-active:focus,
+.btn:focus {
+  outline: none;
+}
+
+/* standings styling */
+
+.standings-container {
+  position: relative;
+  top: 5rem;
+
+  padding: 4rem;
+  margin: 8rem;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+
+  overflow: hidden;
+  animation: fade-in 0.3s ease-in-out;
+}
+
+.standings-table {
+  list-style: none;
+  /* flex-wrap: nowrap; */
+  width: 100%;
+}
+
+.standings-header,
+.standings-item {
+  display: grid;
+  align-content: center;
+  grid-template-columns:
+    [rank-start] minmax(2rem, 4rem) [rank-end team-start] minmax(10rem, 1fr)
+    [team-end category-start] repeat(
+      5,
+      [col-start] minmax(2rem, 8rem) [col-end]
+    )
+    [category-end];
+  grid-gap: 2rem;
+  align-items: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.standings-team {
+  display: flex;
+  align-content: space-evenly;
+}
+
+.standings-logo {
+  height: 3rem;
+  width: 3rem;
+}
+
+.standings-second {
+  background: rgb(224, 224, 224);
+}
