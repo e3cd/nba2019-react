@@ -22,12 +22,13 @@
   grid-template-columns: 1.25fr 1.5fr;
   align-items: center;
   max-width: 100%;
+  font-weight: 600;
 }
 
 .team-cards-container:hover {
   transform: translateY(-0.7rem) scale(1);
 }
 
-/* .team-label {
-
-} */
+.team-label {
+  text-align: center;
+}

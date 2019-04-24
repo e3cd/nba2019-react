@@ -53,9 +53,6 @@ class TeamsList extends Component {
     );
   }
 }
-// {lastPlayerStats !== undefined ? (
-//   <PlayerStatCard stats={lastPlayerStats} teams={listOfTeams} />
-// ) : null}
 
 const mapStateToProps = state => {
   return {
