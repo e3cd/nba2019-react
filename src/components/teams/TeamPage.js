@@ -46,11 +46,13 @@ class TeamPage extends Component {
     const allPlayers = this.props.players;
 
     //make a new array with fullName of each player
-    const newPlayers = !allPlayers
-      ? []
-      : allPlayers.forEach(
-          player => (player.fullName = player.firstName + " " + player.lastName)
-        );
+    const newPlayers =
+      allPlayers !== undefined
+        ? allPlayers.map(
+            player =>
+              (player.fullName = player.firstName + " " + player.lastName)
+          )
+        : null;
     // console.log(teamStats);
     // console.log(selectedTeam);
     // console.log(allPlayers);
@@ -72,7 +74,7 @@ class TeamPage extends Component {
         </div>
 
         <div className="team-stats-cards">
-          {teamLeaders !== undefined ? (
+          {teamLeaders !== undefined && allPlayers !== undefined ? (
             <TeamLeadersCard
               teamLeaders={teamLeaders}
               allPlayers={allPlayers}
@@ -86,6 +88,7 @@ class TeamPage extends Component {
             allPlayers={allPlayers}
             teamId={teamId}
             teamImg={teamImg}
+            key={teamId}
           />
         ) : null}
       </div>

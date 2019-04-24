@@ -25,7 +25,7 @@
   border-radius: 3px;
   transition: all 0.3s ease-in;
   font-size: 1.8rem;
-  /* font-weight: 300; */
+  text-decoration: none;
   cursor: pointer;
   display: grid;
   grid-template-columns: 1.25fr 1.5fr;

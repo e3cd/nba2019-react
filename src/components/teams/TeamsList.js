@@ -31,13 +31,13 @@ class TeamsList extends Component {
           const teamStatsUrl = `teams/${team.teamId}`;
 
           return (
-            <Link to={teamStatsUrl} className="team-link">
-              <div className="team-cards-container">
+            <div key={team.teamId}>
+              <Link to={teamStatsUrl} className="team-cards-container">
                 <img src={logoImg} alt="scrub team" style={teamImageStyle} />
 
                 <div className="team-label">{team.fullName}</div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           );
         })
       : null;

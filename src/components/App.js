@@ -19,6 +19,7 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={StandingsPage} />
             <Route path="/players/:id" exact component={PlayerProfile} />
+            <Route path="/teams/players/:id" exact component={PlayerProfile} />
             <Route path="/players/" exact component={PlayerSearch} />
             <Route path="/teams/" exact component={TeamsList} />
             <Route path="/teams/:id" exact component={TeamPage} />

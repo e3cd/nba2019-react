@@ -35,13 +35,12 @@ class TeamRoster extends Component {
       };
 
       return (
-        <Link to={playerStatsUrl} className="player-link">
-          <div className="player-cards-container">
+        <div key={player.personId}>
+          <Link to={playerStatsUrl} className="player-cards-container">
             <img src={playerImg} alt="scrub" style={playerImageStyle} />
-
-            <div className="player-label">{player.fullName}</div>
-          </div>
-        </Link>
+            <div className="team-player-link"> {player.fullName}</div>
+          </Link>
+        </div>
       );
     });
   };
