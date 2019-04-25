@@ -40,8 +40,7 @@ class TeamPage extends Component {
         : null;
     const teamName = selectedTeam !== null ? selectedTeam.fullName : null;
 
-    const teamStats =
-      this.props.teamStats !== undefined ? this.props.teamStats.teams : null;
+    const teamStats = this.props.teamStats;
 
     const allPlayers = this.props.players;
 
@@ -67,10 +66,10 @@ class TeamPage extends Component {
     return (
       <div className="team-page-container">
         <div className="team-header">
-          <div className="team-page-logo">
+          <div className="team-page-name">
             <img src={teamImg} alt="logo" className="team-page-image" />
+            <div className="team-page-name"> {teamName}</div>
           </div>
-          <div className="team-page-name">{teamName}</div>
         </div>
 
         <div className="team-stats-cards">
@@ -80,9 +79,11 @@ class TeamPage extends Component {
               allPlayers={allPlayers}
             />
           ) : null}
-
-          <TeamStatsCard teamStats={teamStats} />
+          {teamStats !== undefined ? (
+            <TeamStatsCard teamStats={teamStats} teamId={teamId} />
+          ) : null}
         </div>
+        <div className="team-roster-header">Team Roster</div>
         {allPlayers !== undefined ? (
           <TeamRoster
             allPlayers={allPlayers}

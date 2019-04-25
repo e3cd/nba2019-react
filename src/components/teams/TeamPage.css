@@ -4,30 +4,38 @@
 }
 
 .team-header {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
 .team-page-logo {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .team-page-image {
   height: 17.5rem;
   width: 17.5rem;
-  /* margin-right: 12.5vw; */
+  margin-bottom: -3.5rem;
 }
 
 .team-page-name {
   height: 100%;
-  display: flex;
+  /* /display: flex; */
   align-items: center;
   font-size: 6rem;
   font-weight: 600;
+  margin-left: 2rem;
 }
 
 .team-stats-cards {
-  border: 1px solid black;
-  display: flex;
+  display: grid;
+  grid-template-columns: 33.3rem auto;
+  grid-gap: 2rem;
+}
+
+.team-roster-header {
+  margin: 6rem 2rem 2rem 2rem;
+  text-align: center;
+  font-size: 4rem;
 }

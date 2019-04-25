@@ -11,7 +11,7 @@ class TeamRoster extends Component {
   };
 
   fetchRoster = teamId => {
-    return this.props.allPlayers.filter(player => player.teamId == teamId);
+    return this.props.allPlayers.filter(player => player.teamId === teamId);
   };
 
   renderRoster = roster => {
