@@ -72,7 +72,7 @@ class TeamPage extends Component {
           </div>
         </div>
 
-        <div className="team-stats-cards">
+        <div className="team-page-cards">
           {teamLeaders !== undefined && allPlayers !== undefined ? (
             <TeamLeadersCard
               teamLeaders={teamLeaders}
