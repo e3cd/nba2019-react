@@ -6,6 +6,7 @@ import allPlayersReducer from "./allPlayersReducer";
 import playerStatsReducer from "./playerStatsReducer";
 import teamStatsReducer from "./teamStatsReducer";
 import teamLeadersReducer from "./teamLeadersReducer";
+import teamScheduleReducer from "./teamScheduleReducer";
 
 export default combineReducers({
   teams: teamsReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
   players: allPlayersReducer,
   playerStats: playerStatsReducer,
   teamStats: teamStatsReducer,
-  teamLeaders: teamLeadersReducer
+  teamLeaders: teamLeadersReducer,
+  teamSchedule: teamScheduleReducer
 });

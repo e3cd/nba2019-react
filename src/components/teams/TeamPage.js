@@ -5,18 +5,22 @@ import {
   fetchTeamLeaders,
   fetchTeams,
   fetchPlayers
+  // fetchTeamSchedule
 } from "./../../actions";
 import { endpointConstants } from "./../../api/endpoints";
 import TeamLeadersCard from "./teamPageCards/TeamLeadersCard";
 import TeamStatsCard from "./teamPageCards/TeamStatsCard";
 import TeamRoster from "./teamPageCards/TeamRoster";
+import TeamScheduleCard from "./teamPageCards/TeamScheduleCard";
+
 import "./TeamPage.css";
 
 class TeamPage extends Component {
   componentDidMount() {
+    this.props.fetchTeamLeaders(this.props.match.params.id);
+    // this.props.fetchTeamSchedule(this.props.match.params.id);
     this.props.fetchTeams();
     this.props.fetchTeamStats();
-    this.props.fetchTeamLeaders(this.props.match.params.id);
     this.props.fetchPlayers();
   }
 
@@ -42,6 +46,9 @@ class TeamPage extends Component {
 
     const teamStats = this.props.teamStats;
 
+    // const teamSchedule = this.props.teamSchedule;
+    // console.log(teamSchedule);
+
     const allPlayers = this.props.players;
 
     //make a new array with fullName of each player
@@ -55,7 +62,6 @@ class TeamPage extends Component {
     // console.log(teamStats);
     // console.log(selectedTeam);
     // console.log(allPlayers);
-    // console.log(this.props.teamLeaders);
     const teamLeaders =
       this.props.teamLeaders !== undefined
         ? this.props.teamLeaders.pop()
@@ -73,7 +79,7 @@ class TeamPage extends Component {
         </div>
 
         <div className="team-page-cards">
-          {teamLeaders !== undefined && allPlayers !== undefined ? (
+          {teamLeaders && allPlayers !== undefined ? (
             <TeamLeadersCard
               teamLeaders={teamLeaders}
               allPlayers={allPlayers}
@@ -82,6 +88,8 @@ class TeamPage extends Component {
           {teamStats !== undefined ? (
             <TeamStatsCard teamStats={teamStats} teamId={teamId} />
           ) : null}
+
+          <TeamScheduleCard teamId={teamId} />
         </div>
         <div className="team-roster-header">Team Roster</div>
         {allPlayers !== undefined ? (
@@ -108,5 +116,10 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchTeamStats, fetchTeamLeaders, fetchTeams, fetchPlayers }
+  {
+    fetchTeamStats,
+    fetchTeamLeaders,
+    fetchTeams,
+    fetchPlayers
+  }
 )(TeamPage);

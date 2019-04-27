@@ -7,7 +7,8 @@ import {
   FETCH_PLAYERS,
   FETCH_PLAYER_STATS,
   FETCH_TEAM_LEADERS,
-  FETCH_TEAM_STATS
+  FETCH_TEAM_STATS,
+  FETCH_TEAM_SCHEDULE
 } from "./types";
 
 export const fetchTeams = () => async dispatch => {
@@ -87,9 +88,19 @@ export const fetchTeamLeaders = teamId => async dispatch => {
   const getTeamLeaders = endpointConstants.FETCH_TEAM_LEADERS(teamId);
 
   const response = await stats.get(getTeamLeaders);
-  // console.log(response);
+  // console.log(response.data.league.standard);
   dispatch({
     type: FETCH_TEAM_LEADERS,
+    payload: response.data.league.standard
+  });
+};
+
+export const fetchTeamSchedule = teamId => async dispatch => {
+  const getTeamSchedule = endpointConstants.FETCH_TEAM_SCHEDULE(teamId);
+
+  const response = await stats.get(getTeamSchedule);
+  dispatch({
+    type: FETCH_TEAM_SCHEDULE,
     payload: response.data.league.standard
   });
 };

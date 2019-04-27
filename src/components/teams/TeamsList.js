@@ -44,7 +44,7 @@ class TeamsList extends Component {
   };
 
   render() {
-    console.log(this.props.teams[0]);
+    // console.log(this.props.teams[0]);
     const teamList = this.props.teams[0];
     return (
       <div className="team-list-container">

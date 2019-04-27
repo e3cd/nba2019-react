@@ -17,6 +17,8 @@ export const endpointConstants = {
 
   FETCH_TEAM_LEADERS: teamId => `/prod/v1/2018/teams/${teamId}/leaders.json`,
 
+  FETCH_TEAM_SCHEDULE: teamId => `/prod/v1/2018/teams/${teamId}/schedule.json`,
+
   TEAM_LOGO: tricode =>
     `https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/${tricode.toLowerCase()}.png`
 };

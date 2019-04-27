@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import { endpointConstants } from "./../../../api/endpoints";
 import "./TeamLeadersCard.css";
 
@@ -10,8 +11,8 @@ class TeamLeadersCard extends Component {
   };
 
   render() {
-    const teamLeaders = this.props.teamLeaders;
-    // console.log(teamLeaders);
+    const teamStatLeaders = this.props.teamLeaders;
+    // console.log(teamStatLeaders);
     // const players = this.props.allPlayers;
     // console.log(players);
 
@@ -26,11 +27,12 @@ class TeamLeadersCard extends Component {
         {stats.map(stat => {
           //   console.log(teamLeaders[stat][0].value);
           //   console.log(stat);
-          const leadPlayer = this.getPlayerName(teamLeaders[stat][0].personId)
-            .fullName;
-          const leadStat = teamLeaders[stat][0].value;
+          const leadPlayer = this.getPlayerName(
+            teamStatLeaders[stat][0].personId
+          ).fullName;
+          const leadStat = teamStatLeaders[stat][0].value;
           const playerImg = endpointConstants.FETCH_PLAYER_HEADSHOT(
-            teamLeaders[stat][0].personId
+            teamStatLeaders[stat][0].personId
           );
           const statName = stat.toUpperCase();
 
