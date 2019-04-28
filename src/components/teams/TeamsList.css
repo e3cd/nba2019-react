@@ -1,0 +1,36 @@
+.team-list-container {
+  margin: 8rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  grid-gap: 2rem;
+}
+
+/* .team-link {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+} */
+
+.team-cards-container {
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0.4rem 0.5rem;
+  border-radius: 3px;
+  transition: all 0.3s ease-in;
+  font-size: 1.8rem;
+  text-decoration: none;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1.25fr 1.5fr;
+  align-items: center;
+  max-width: 100%;
+  font-weight: 600;
+}
+
+.team-cards-container:hover {
+  transform: translateY(-0.7rem) scale(1);
+}
+
+.team-label {
+  text-align: center;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}

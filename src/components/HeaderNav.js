@@ -23,7 +23,7 @@ class HeaderNav extends Component {
   render() {
     return (
       <nav className="nav">
-        <div className="nav-title">2019 NBA SEASON STATS</div>
+        <div className="nav-title">2019 NBA SEASON</div>
         <ul className="nav-list">
           <Link to="/" style={{ textDecoration: "none" }} className="nav-item">
             <li className="nav-link">Standings</li>

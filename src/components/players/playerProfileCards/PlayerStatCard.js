@@ -37,8 +37,10 @@ class PlayerStatCard extends Component {
             <li>{team.apg}</li>
             <li>{team.fgp}</li>
             <li>{team.ftp}</li>
+            <li>{team.tpp}</li>
             <li>{team.spg}</li>
             <li>{team.bpg}</li>
+            <li>{Math.round((team.tpm / team.gamesPlayed) * 100) / 100}</li>
             <li>
               {Math.round((team.turnovers / team.gamesPlayed) * 100) / 100}
             </li>
@@ -59,8 +61,10 @@ class PlayerStatCard extends Component {
         <li>{list[0].apg}</li>
         <li>{list[0].fgp}</li>
         <li>{list[0].ftp}</li>
+        <li>{list[0].tpp}</li>
         <li>{list[0].spg}</li>
         <li>{list[0].bpg}</li>
+        <li>{Math.round((list[0].tpm / list[0].gamesPlayed) * 100) / 100}</li>
         <li>
           {Math.round((list[0].turnovers / list[0].gamesPlayed) * 100) / 100}
         </li>
@@ -88,8 +92,14 @@ class PlayerStatCard extends Component {
             <li>{season.teams[0].apg}</li>
             <li>{season.teams[0].fgp}</li>
             <li>{season.teams[0].ftp}</li>
+            <li>{season.teams[0].tpp}</li>
             <li>{season.teams[0].spg}</li>
             <li>{season.teams[0].bpg}</li>
+            <li>
+              {Math.round(
+                (season.teams[0].tpm / season.teams[0].gamesPlayed) * 100
+              ) / 100}
+            </li>
             <li>
               {Math.round(
                 (season.teams[0].turnovers / season.teams[0].gamesPlayed) * 100
@@ -116,8 +126,11 @@ class PlayerStatCard extends Component {
         <li>{list.apg}</li>
         <li>{list.fgp}</li>
         <li>{list.ftp}</li>
+        <li>{list.tpp}</li>
         <li>{list.spg}</li>
         <li>{list.bpg}</li>
+        <li>{Math.round((list.tpm / list.gamesPlayed) * 100) / 100}</li>
+
         <li>{Math.round((list.turnovers / list.gamesPlayed) * 100) / 100}</li>
         <li>{list.mpg}</li>
         <li>{list.dd2}</li>
@@ -176,10 +189,16 @@ class PlayerStatCard extends Component {
               <b>Free Throw Percentage:</b>
             </li>
             <li>
+              <b>Three Point Percentage:</b>
+            </li>
+            <li>
               <b>Steals Per Game:</b>
             </li>
             <li>
               <b>Blocks Per Game:</b>
+            </li>
+            <li>
+              <b>Threes Per Game:</b>
             </li>
             <li>
               <b>Turnovers Per Game:</b>
