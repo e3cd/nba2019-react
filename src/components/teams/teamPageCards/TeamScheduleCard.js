@@ -33,12 +33,10 @@ class TeamScheduleCard extends Component {
               .slice(regularSchedule.length - 8)
               .reverse()
               .map(game => {
-                const { hTeam, vTeam, isHomeTeam } = game;
+                const { hTeam, vTeam, isHomeTeam, homeStartDate } = game;
                 const { teamId } = this.props;
                 const homeScore = Math.floor(hTeam.score);
                 const awayScore = Math.floor(vTeam.score);
-
-                console.log(game);
 
                 let results = () => {
                   if (isHomeTeam === true && homeScore > awayScore) {
@@ -52,6 +50,25 @@ class TeamScheduleCard extends Component {
                   }
                 };
                 const result = results();
+                const date = homeStartDate.slice(4).replace("0", "");
+                let formatDate = date => {
+                  let test = date.slice(1) + date.slice(0, 1);
+                  return test.indexOf("0") === 0 ? test.slice(1) : test;
+                };
+                const testDate = formatDate(date);
+
+                let finalDate = date => {
+                  if (date.length % 2 === 0) {
+                    return (
+                      date.substring(0, date.length / 2) +
+                      "/" +
+                      date.slice(date.length / 2)
+                    );
+                  }
+                  return date.substring(0, 2) + "/" + date.slice(2);
+                };
+
+                const gameDate = finalDate(testDate);
 
                 const oppId = isHomeTeam ? vTeam.teamId : hTeam.teamId;
                 const oppLogo = endpointConstants.TEAM_LOGO(
@@ -63,6 +80,7 @@ class TeamScheduleCard extends Component {
 
                 return (
                   <div className="team-schedule-list">
+                    <div>{gameDate}</div>
                     <div>
                       <img
                         src={oppLogo}
@@ -70,7 +88,6 @@ class TeamScheduleCard extends Component {
                         className="opponent-logo"
                       />
                     </div>
-
                     <div>
                       {venue} {oppTeam}
                     </div>
