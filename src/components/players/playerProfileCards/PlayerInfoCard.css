@@ -2,8 +2,7 @@
   border: 1px solid rgba(0, 0, 0, 0.23);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0.4rem 0.5rem;
   border-radius: 3px;
-  margin-top: 4rem;
-
+  height: 100%;
   text-align: center;
 }
 
@@ -21,12 +20,22 @@
   list-style: none;
   display: flex;
   justify-content: space-evenly;
-  font-size: 1.25rem;
+  font-size: 1.75rem;
+  font-weight: 700;
   margin: 2rem;
 }
 
 .info-list {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  text-align: center;
   list-style: none;
+  margin-left: 4rem;
+  height: calc(100% - 35rem);
+  font-size: 1.5rem;
+}
+
+.info-values {
+  display: grid;
+  grid-template-columns: 1fr;
 }
