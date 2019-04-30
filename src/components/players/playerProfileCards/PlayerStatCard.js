@@ -25,7 +25,7 @@ class PlayerStatCard extends Component {
   newSeasonStats = list => {
     return list.map(team => {
       team.tricode = this.getTeamName(team.teamId).tricode;
-
+      team.tpg = Math.round((team.tpm / team.gamesPlayed) * 100) / 100;
       return team;
     });
   };
@@ -36,9 +36,16 @@ class PlayerStatCard extends Component {
         season.teams[0].teamId
       ).tricode;
       season.teams[0].year = season.seasonYear;
-
+      season.teams[0].tpg =
+        Math.round((season.teams[0].tpm / season.teams[0].gamesPlayed) * 100) /
+        100;
       return season;
     });
+  };
+
+  newCareerTotals = list => {
+    list.topg = Math.round((list.turnovers / list.gamesPlayed) * 100) / 100;
+    return list;
   };
 
   renderSeasonStats = list => {
@@ -46,17 +53,18 @@ class PlayerStatCard extends Component {
       "tricode",
       "gamesPlayed",
       "gamesStarted",
+      "mpg",
       "ppg",
       "rpg",
       "apg",
       "fgp",
       "ftp",
       "tpp",
+      "tpg",
       "spg",
       "bpg",
       "topg",
-      "tpm",
-      "mpg",
+
       "dd2",
       "td3"
     ];
@@ -78,17 +86,18 @@ class PlayerStatCard extends Component {
       "tricode",
       "gamesPlayed",
       "gamesStarted",
+      "mpg",
       "ppg",
       "rpg",
       "apg",
       "fgp",
       "ftp",
       "tpp",
+      "tpg",
       "spg",
       "bpg",
       "topg",
-      "tpm",
-      "mpg",
+
       "dd2",
       "td3"
     ];
@@ -104,6 +113,37 @@ class PlayerStatCard extends Component {
     });
   };
 
+  renderCareerTotals = list => {
+    const stats = [
+      "gamesPlayed",
+      "gamesStarted",
+      "mpg",
+      "ppg",
+      "rpg",
+      "apg",
+      "fgp",
+      "ftp",
+      "tpp",
+      "spg",
+      "bpg",
+      "topg",
+      "tpm",
+      "dd2",
+      "td3"
+    ];
+
+    return (
+      <div className="career-total-list">
+        <div style={{ fontSize: "14px" }}>
+          <b>Career</b>
+        </div>
+        {stats.map((stat, index) => {
+          return <div key={index}>{list[stat]}</div>;
+        })}
+      </div>
+    );
+  };
+
   render() {
     const seasonStats = this.newSeasonStats(
       this.props.stats.regularSeason.season[0].teams
@@ -112,7 +152,7 @@ class PlayerStatCard extends Component {
       this.props.stats.regularSeason.season
     );
 
-    const careerTotals = this.props.stats.careerSummary;
+    const careerTotals = this.newCareerTotals(this.props.stats.careerSummary);
 
     console.log(allSeasonStats);
     console.log(careerTotals);
@@ -122,17 +162,17 @@ class PlayerStatCard extends Component {
       Team: "Team",
       GP: "Games Played",
       GS: "Games Started",
+      MPG: "Minutes Per Game",
       PPG: "Points Per Game",
       RPG: "Rebounds Per Game",
       APG: "Assists Per Game",
       FGP: "Field Goal Percentage",
       FTP: "Free Throw Percentage",
       TPP: "Three Point Percentage",
+      TPG: "Threes Per Game",
       SPG: "Steals Per Game",
       BPG: "Blocks Per Game",
-      TPG: "Turnovers per game",
-      TPM: "Three Pointers Made",
-      MPG: "Minutes Per Game",
+      TOG: "Turnovers per game",
       DDL: "Double Doubles",
       TDL: "Triple Doubles"
     };
@@ -173,7 +213,12 @@ class PlayerStatCard extends Component {
                 {this.renderSeasonStats(seasonStats)}
               </div>
             ) : (
-              <div>{this.renderCareerStats(allSeasonStats)}</div>
+              <div>
+                {[
+                  this.renderCareerStats(allSeasonStats),
+                  this.renderCareerTotals(careerTotals)
+                ]}
+              </div>
             )}
           </div>
         </div>

@@ -58,7 +58,7 @@
   grid-template-columns: max-content 1fr;
 
   text-align: left;
-  margin-left: 1rem;
+
   font-size: 1.5rem;
 }
 
@@ -71,6 +71,16 @@
   display: grid;
   grid-template-columns: repeat(17, 1fr);
   grid-template-rows: repeat(auto-fit, 3rem);
-  margin: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.career-total-list {
+  display: grid;
+  grid-template-columns: 2fr repeat(15, 1fr);
+  grid-template-rows: repeat(auto-fit, 3rem);
+  align-items: center;
+  margin-bottom: 1rem;
   font-size: 1.2rem;
 }
