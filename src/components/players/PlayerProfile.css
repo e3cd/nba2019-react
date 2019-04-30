@@ -1,6 +1,6 @@
 .profile-container {
   margin: 8rem;
   display: grid;
-  grid-template-columns: [info-start] minmax(max-content, 20rem) [info-end stat-start] 1fr [stat-end];
+  grid-template-columns: [info-start] minmax(max-content, 1.5fr) [info-end stat-start] 3fr [stat-end];
   grid-gap: 2rem;
 }

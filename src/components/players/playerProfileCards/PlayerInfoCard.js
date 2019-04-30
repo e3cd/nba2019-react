@@ -71,33 +71,33 @@ class PlayerInfoCard extends Component {
           <li>#{list.jersey}</li>
         </ul>
         <div className="info-list">
-          <ul style={{ listStyle: "none" }}>
-            <li>
+          <div className="info-values">
+            <div>
               <b>Date Of Birth:</b>
-            </li>
-            <li>
+            </div>
+            <div>
               <b>Country:</b>
-            </li>
-            <li>
+            </div>
+            <div>
               <b>Height/Weight:</b>
-            </li>
+            </div>
 
-            <li>
+            <div>
               <b>{this.prevAffiliation(list)}:</b>
-            </li>
-            <li>
+            </div>
+            <div>
               <b>Draft Info:</b>
-            </li>
-          </ul>
-          <ul style={{ listStyle: "none" }}>
-            <li>{list.dateOfBirthUTC}</li>
-            <li>{list.country}</li>
-            <li>
+            </div>
+          </div>
+          <div className="info-values">
+            <div>{list.dateOfBirthUTC}</div>
+            <div>{list.country}</div>
+            <div>
               {list.heightFeet + "'" + list.heightInches} - {list.weightPounds}
-            </li>
-            <li>{this.getCollege(list)}</li>
-            <li>{this.isDrafted(list)}</li>
-          </ul>
+            </div>
+            <div>{this.getCollege(list)}</div>
+            <div>{this.isDrafted(list)}</div>
+          </div>
         </div>
       </div>
     ) : null;
