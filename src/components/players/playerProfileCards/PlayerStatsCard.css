@@ -47,7 +47,7 @@
 }
 
 .stat-list-container {
-  margin: 5rem;
+  margin: 3.5rem;
 
   list-style: none;
   height: 100%;
@@ -72,6 +72,7 @@
   grid-template-columns: repeat(17, 1fr);
   grid-template-rows: repeat(auto-fit, 3rem);
   align-items: center;
+  text-align: center;
   margin-bottom: 1rem;
   font-size: 1.2rem;
 }
@@ -81,6 +82,29 @@
   grid-template-columns: 2fr repeat(15, 1fr);
   grid-template-rows: repeat(auto-fit, 3rem);
   align-items: center;
+  text-align: center;
   margin-bottom: 1rem;
   font-size: 1.2rem;
+}
+
+/*********MEDIA QUERIES ***********/
+
+@media only screen and (max-width: 50em) {
+  .stat-card {
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0.4rem 0.5rem;
+    border-radius: 3px;
+    margin: 8rem 2rem;
+  }
+}
+
+@media only screen and (max-width: 37.5em) {
+  .stat-card {
+    margin: 8rem 1rem;
+  }
+
+  .stat-list-container {
+    margin: 5rem 0;
+    padding: 8px;
+  }
 }

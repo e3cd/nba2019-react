@@ -44,7 +44,9 @@ class PlayerStatCard extends Component {
   };
 
   newCareerTotals = list => {
+    list.tpg = Math.round((list.tpm / list.gamesPlayed) * 100) / 100;
     list.topg = Math.round((list.turnovers / list.gamesPlayed) * 100) / 100;
+
     return list;
   };
 
@@ -97,7 +99,6 @@ class PlayerStatCard extends Component {
       "spg",
       "bpg",
       "topg",
-
       "dd2",
       "td3"
     ];
@@ -124,19 +125,17 @@ class PlayerStatCard extends Component {
       "fgp",
       "ftp",
       "tpp",
+      "tpg",
       "spg",
       "bpg",
       "topg",
-      "tpm",
       "dd2",
       "td3"
     ];
 
     return (
       <div className="career-total-list">
-        <div style={{ fontSize: "14px" }}>
-          <b>Career</b>
-        </div>
+        <div>Career</div>
         {stats.map((stat, index) => {
           return <div key={index}>{list[stat]}</div>;
         })}

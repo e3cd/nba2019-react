@@ -43,7 +43,7 @@ class PlayerInfoCard extends Component {
 
   renderInfo = list => {
     return list ? (
-      <div className="info-card">
+      <div>
         <h1 className="info-title">{list.firstName + " " + list.lastName}</h1>
         <div className="info-image">
           <img
@@ -108,7 +108,7 @@ class PlayerInfoCard extends Component {
     const info = this.props.info;
     // console.log(info);
     // console.log(this.props.teams);
-    return <div>{this.renderInfo(info)}</div>;
+    return <div className="info-card">{this.renderInfo(info)}</div>;
   }
 }
 

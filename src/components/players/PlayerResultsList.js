@@ -36,7 +36,7 @@ class PlayerResultsList extends Component {
           return (
             <Link to={playerStatsUrl} className="player-link">
               <div className="player-cards-container">
-                <img src={playerImg} alt="scrub" style={playerImageStyle} />
+                <img src={playerImg} alt="no image" style={playerImageStyle} />
 
                 <div className="player-label">
                   <div className="player-name">{player.fullName}</div>
