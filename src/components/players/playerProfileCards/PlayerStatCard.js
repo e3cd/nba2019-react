@@ -22,121 +22,162 @@ class PlayerStatCard extends Component {
     return this.props.teams.find(team => team.teamId === teamId);
   };
 
-  renderSeasonStats = list => {
-    return list.length > 1 ? (
-      list.map(team => {
-        return (
-          <ul style={{ listStyle: "none" }}>
-            <li>
-              <b>{this.getTeamName(team.teamId).tricode}</b>
-            </li>
-            <li>{team.gamesPlayed}</li>
-            <li>{team.gamesStarted}</li>
-            <li>{team.ppg}</li>
-            <li>{team.rpg}</li>
-            <li>{team.apg}</li>
-            <li>{team.fgp}</li>
-            <li>{team.ftp}</li>
-            <li>{team.spg}</li>
-            <li>{team.bpg}</li>
-            <li>
-              {Math.round((team.turnovers / team.gamesPlayed) * 100) / 100}
-            </li>
-            <li>{team.mpg}</li>
-            <li>{team.dd2}</li>
-            <li>{team.td3}</li>
-          </ul>
-        );
-      })
-    ) : (
-      <ul style={{ listStyle: "none" }}>
-        <li>&nbsp;</li>
+  newSeasonStats = list => {
+    return list.map(team => {
+      team.tricode = this.getTeamName(team.teamId).tricode;
+      team.tpg = Math.round((team.tpm / team.gamesPlayed) * 100) / 100;
+      return team;
+    });
+  };
 
-        <li>{list[0].gamesPlayed}</li>
-        <li>{list[0].gamesStarted}</li>
-        <li>{list[0].ppg}</li>
-        <li>{list[0].rpg}</li>
-        <li>{list[0].apg}</li>
-        <li>{list[0].fgp}</li>
-        <li>{list[0].ftp}</li>
-        <li>{list[0].spg}</li>
-        <li>{list[0].bpg}</li>
-        <li>
-          {Math.round((list[0].turnovers / list[0].gamesPlayed) * 100) / 100}
-        </li>
-        <li>{list[0].mpg}</li>
-        <li>{list[0].dd2}</li>
-        <li>{list[0].td3}</li>
-      </ul>
-    );
+  newCareerStats = list => {
+    return list.map(season => {
+      season.teams[0].tricode = this.getTeamName(
+        season.teams[0].teamId
+      ).tricode;
+      season.teams[0].year = season.seasonYear;
+      season.teams[0].tpg =
+        Math.round((season.teams[0].tpm / season.teams[0].gamesPlayed) * 100) /
+        100;
+      return season;
+    });
+  };
+
+  newCareerTotals = list => {
+    list.tpg = Math.round((list.tpm / list.gamesPlayed) * 100) / 100;
+    list.topg = Math.round((list.turnovers / list.gamesPlayed) * 100) / 100;
+
+    return list;
+  };
+
+  renderSeasonStats = list => {
+    const stats = [
+      "tricode",
+      "gamesPlayed",
+      "gamesStarted",
+      "mpg",
+      "ppg",
+      "rpg",
+      "apg",
+      "fgp",
+      "ftp",
+      "tpp",
+      "tpg",
+      "spg",
+      "bpg",
+      "topg",
+
+      "dd2",
+      "td3"
+    ];
+
+    return list.map((team, index) => {
+      return (
+        <div key={index}>
+          {stats.map((stat, index) => {
+            return <div key={index}>{team[stat]}</div>;
+          })}
+        </div>
+      );
+    });
   };
 
   renderCareerStats = list => {
-    return list
-      .slice(0)
-      .reverse()
-      .map(season => {
-        return (
-          <ul style={{ listStyle: "none" }}>
-            <li>
-              <b>{season.seasonYear}</b>
-            </li>
-            <li>{season.teams[0].gamesPlayed}</li>
-            <li>{season.teams[0].gamesStarted}</li>
-            <li>{season.teams[0].ppg}</li>
-            <li>{season.teams[0].rpg}</li>
-            <li>{season.teams[0].apg}</li>
-            <li>{season.teams[0].fgp}</li>
-            <li>{season.teams[0].ftp}</li>
-            <li>{season.teams[0].spg}</li>
-            <li>{season.teams[0].bpg}</li>
-            <li>
-              {Math.round(
-                (season.teams[0].turnovers / season.teams[0].gamesPlayed) * 100
-              ) / 100}
-            </li>
-            <li>{season.teams[0].mpg}</li>
-            <li>{season.teams[0].dd2}</li>
-            <li>{season.teams[0].td3}</li>
-          </ul>
-        );
-      });
+    const stats = [
+      "year",
+      "tricode",
+      "gamesPlayed",
+      "gamesStarted",
+      "mpg",
+      "ppg",
+      "rpg",
+      "apg",
+      "fgp",
+      "ftp",
+      "tpp",
+      "tpg",
+      "spg",
+      "bpg",
+      "topg",
+      "dd2",
+      "td3"
+    ];
+
+    return list.reverse().map(season => {
+      return (
+        <div className="career-stat-list">
+          {stats.map((stat, index) => {
+            return <div key={index}>{season.teams[0][stat]}</div>;
+          })}
+        </div>
+      );
+    });
   };
 
   renderCareerTotals = list => {
+    const stats = [
+      "gamesPlayed",
+      "gamesStarted",
+      "mpg",
+      "ppg",
+      "rpg",
+      "apg",
+      "fgp",
+      "ftp",
+      "tpp",
+      "tpg",
+      "spg",
+      "bpg",
+      "topg",
+      "dd2",
+      "td3"
+    ];
+
     return (
-      <ul style={{ listStyle: "none" }}>
-        <li>
-          <b>Career</b>
-        </li>
-        <li>{list.gamesPlayed}</li>
-        <li>{list.gamesStarted}</li>
-        <li>{list.ppg}</li>
-        <li>{list.rpg}</li>
-        <li>{list.apg}</li>
-        <li>{list.fgp}</li>
-        <li>{list.ftp}</li>
-        <li>{list.spg}</li>
-        <li>{list.bpg}</li>
-        <li>{Math.round((list.turnovers / list.gamesPlayed) * 100) / 100}</li>
-        <li>{list.mpg}</li>
-        <li>{list.dd2}</li>
-        <li>{list.td3}</li>
-      </ul>
+      <div className="career-total-list">
+        <div>Career</div>
+        {stats.map((stat, index) => {
+          return <div key={index}>{list[stat]}</div>;
+        })}
+      </div>
     );
   };
 
   render() {
-    const seasonStats = this.props.stats.regularSeason.season[0].teams;
-    const allSeasonStats = this.props.stats.regularSeason.season;
+    const seasonStats = this.newSeasonStats(
+      this.props.stats.regularSeason.season[0].teams
+    );
+    const allSeasonStats = this.newCareerStats(
+      this.props.stats.regularSeason.season
+    );
 
-    const careerTotals = this.props.stats.careerSummary;
+    const careerTotals = this.newCareerTotals(this.props.stats.careerSummary);
 
-    console.log(seasonStats);
-    console.log(careerTotals);
     console.log(allSeasonStats);
+    console.log(careerTotals);
+
+    const stats = {
+      Year: "",
+      Team: "Team",
+      GP: "Games Played",
+      GS: "Games Started",
+      MPG: "Minutes Per Game",
+      PPG: "Points Per Game",
+      RPG: "Rebounds Per Game",
+      APG: "Assists Per Game",
+      FGP: "Field Goal Percentage",
+      FTP: "Free Throw Percentage",
+      TPP: "Three Point Percentage",
+      TPG: "Threes Per Game",
+      SPG: "Steals Per Game",
+      BPG: "Blocks Per Game",
+      TOG: "Turnovers per game",
+      DDL: "Double Doubles",
+      TDL: "Triple Doubles"
+    };
+
     return (
-      <div className="stat-card">
+      <div className="stat-card" key={seasonStats}>
         <div className="stat-btn-container">
           <button
             className={this.state.season ? "stat-btn-active" : "stat-btn"}
@@ -151,55 +192,34 @@ class PlayerStatCard extends Component {
             Career
           </button>
         </div>
-        <div className="stat-list">
-          <ul style={{ listStyle: "none" }}>
-            <li>&nbsp;</li>
-            <li>
-              <b>Games Played:</b>
-            </li>
-            <li>
-              <b>Games Started:</b>
-            </li>
-            <li>
-              <b>Points Per Game:</b>
-            </li>
-            <li>
-              <b>Rebounds Per Game:</b>
-            </li>
-            <li>
-              <b>Assists Per Game:</b>
-            </li>
-            <li>
-              <b>Field Goal Percentage:</b>
-            </li>
-            <li>
-              <b>Free Throw Percentage:</b>
-            </li>
-            <li>
-              <b>Steals Per Game:</b>
-            </li>
-            <li>
-              <b>Blocks Per Game:</b>
-            </li>
-            <li>
-              <b>Turnovers Per Game:</b>
-            </li>
-            <li>
-              <b>Minutes Per Game:</b>
-            </li>
-            <li>
-              <b>Double Doubles:</b>
-            </li>
-            <li>
-              <b>Triple Doubles:</b>
-            </li>
-          </ul>
-          {this.state.season
-            ? this.renderSeasonStats(seasonStats)
-            : [
-                this.renderCareerStats(allSeasonStats),
-                this.renderCareerTotals(careerTotals)
-              ]}
+        <div className="stat-list-container" key={careerTotals}>
+          <div className={this.state.season ? "season-stat-list" : null}>
+            <div
+              style={{ fontWeight: "700" }}
+              className={!this.state.season ? "career-stat-list" : null}
+            >
+              {this.state.season
+                ? Object.values(stats).map((stat, index) => {
+                    return <div key={index}>{stat}</div>;
+                  })
+                : Object.keys(stats).map((stat, index) => {
+                    return <div key={index}>{stat}</div>;
+                  })}
+            </div>
+
+            {this.state.season ? (
+              <div className="season-stat-value">
+                {this.renderSeasonStats(seasonStats)}
+              </div>
+            ) : (
+              <div key={allSeasonStats}>
+                {[
+                  this.renderCareerStats(allSeasonStats),
+                  this.renderCareerTotals(careerTotals)
+                ]}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );

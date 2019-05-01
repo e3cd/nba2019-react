@@ -6,11 +6,10 @@ import "./PlayerResultsList.css";
 
 class PlayerResultsList extends Component {
   getTeamName = teamId => {
-    // console.log(this.props.teams);
     return this.props.getTeams.find(team => team.teamId === teamId);
   };
 
-  renderFilteredList = list => {
+  renderFilteredList = (list, index) => {
     return list
       ? list.map(player => {
           const teamName = this.getTeamName(player.teamId).fullName;
@@ -34,18 +33,13 @@ class PlayerResultsList extends Component {
           const playerStatsUrl = `players/${player.personId}`;
 
           return (
-            <Link to={playerStatsUrl} className="player-link">
-              <div className="player-cards-container">
-                <img
-                  src={playerImg}
-                  alt="scrub"
-                  className="player-image"
-                  style={playerImageStyle}
-                />
+            <Link to={playerStatsUrl} className="player-link" key={index}>
+              <div className="player-cards-container" key={playerImg}>
+                <img src={playerImg} alt="no image" style={playerImageStyle} />
 
-                <div className="player-label">
+                <div className="player-label" key={player.fullName}>
                   <div className="player-name">{player.fullName}</div>
-                  <div className="player-sublabel">
+                  <div className="player-sublabel" key={teamName}>
                     <div>
                       <img src={logoImg} alt="logo" className="team-logo" />
                     </div>
@@ -62,9 +56,7 @@ class PlayerResultsList extends Component {
   render() {
     //make new teams and player objects from actions to remove the SCRUB players and non-nba teams
 
-    const players = this.props.getPlayers;
-    // console.log(players);
-    // console.log(this.props.getTeams);
+    const players = this.props.getPlayers ? this.props.getPlayers : null;
 
     //make a new array with fullName of each player
     const newPlayers = !players
@@ -74,8 +66,6 @@ class PlayerResultsList extends Component {
         );
 
     const searchTerm = this.props.searchTerm;
-    // console.log(players);
-    // console.log(this.props.getTeams);
 
     const search = (list, term) =>
       searchTerm.length < 2
@@ -86,10 +76,6 @@ class PlayerResultsList extends Component {
 
     //use players instead of newPlayers for some reason
     const filteredPlayers = search(players, searchTerm);
-    // console.log(filteredPlayers);
-
-    // let teamLogo = this.getTeamName(team.teamId).tricode;
-    // let imgSrc = endpointConstants.TEAM_LOGO(teamLogo);
 
     return (
       <div className="results-container">

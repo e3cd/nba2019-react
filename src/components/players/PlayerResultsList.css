@@ -8,6 +8,7 @@
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+
   grid-gap: 2rem;
   align-items: center;
   text-align: center;
@@ -20,11 +21,12 @@
 
 .player-cards-container {
   border: 1px solid rgba(0, 0, 0, 0.23);
+
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0.4rem 0.5rem;
   border-radius: 3px;
   transition: all 0.3s ease-in;
   font-size: 1.8rem;
-  /* font-weight: 300; */
+  text-decoration: none;
   cursor: pointer;
   display: grid;
   grid-template-columns: 1.25fr 1.5fr;
@@ -38,11 +40,20 @@
 
 .player-label {
   list-style: none;
+  height: 100%;
+
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
 }
+
+/* .player-portrait {
+  height: auto;
+} */
 
 .player-name {
   justify-content: center;
-  margin-bottom: 1rem;
+
   font-weight: 700;
   /* max-width: 100%;
   height: auto; */
@@ -65,7 +76,26 @@
   margin: 1rem 0 0 0.5rem;
 }
 
-/* @media only screen and (max-width: 83rem) {
-    .player-cards-container {
-      font-size: 2.5rem;
-    } */
+/*************** Media Queries ***************/
+
+@media only screen and (max-width: 31em) {
+  .player-label {
+    font-size: 2.5rem;
+    font-weight: 400;
+  }
+
+  .player-sublabel {
+    font-size: 1.75rem;
+  }
+}
+
+@media only screen and (max-width: 26em) {
+  .player-label {
+    font-size: 1.75rem;
+    font-weight: 400;
+  }
+
+  .player-sublabel {
+    font-size: 1.5rem;
+  }
+}

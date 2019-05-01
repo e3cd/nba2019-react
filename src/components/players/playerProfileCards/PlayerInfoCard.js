@@ -4,7 +4,6 @@ import "./PlayerInfoCard.css";
 
 class PlayerInfoCard extends Component {
   getTeamName = teamId => {
-    // console.log(this.props.teams);
     return this.props.teams.find(team => team.teamId === teamId);
   };
 
@@ -43,7 +42,7 @@ class PlayerInfoCard extends Component {
 
   renderInfo = list => {
     return list ? (
-      <div className="info-card">
+      <div>
         <h1 className="info-title">{list.firstName + " " + list.lastName}</h1>
         <div className="info-image">
           <img
@@ -71,44 +70,42 @@ class PlayerInfoCard extends Component {
           <li>#{list.jersey}</li>
         </ul>
         <div className="info-list">
-          <ul style={{ listStyle: "none" }}>
-            <li>
+          <div className="info-values">
+            <div>
               <b>Date Of Birth:</b>
-            </li>
-            <li>
+            </div>
+            <div>
               <b>Country:</b>
-            </li>
-            <li>
+            </div>
+            <div>
               <b>Height/Weight:</b>
-            </li>
+            </div>
 
-            <li>
+            <div>
               <b>{this.prevAffiliation(list)}:</b>
-            </li>
-            <li>
+            </div>
+            <div>
               <b>Draft Info:</b>
-            </li>
-          </ul>
-          <ul style={{ listStyle: "none" }}>
-            <li>{list.dateOfBirthUTC}</li>
-            <li>{list.country}</li>
-            <li>
+            </div>
+          </div>
+          <div className="info-values">
+            <div>{list.dateOfBirthUTC}</div>
+            <div>{list.country}</div>
+            <div>
               {list.heightFeet + "'" + list.heightInches} - {list.weightPounds}
-            </li>
-            <li>{this.getCollege(list)}</li>
-            <li>{this.isDrafted(list)}</li>
-          </ul>
+            </div>
+            <div>{this.getCollege(list)}</div>
+            <div>{this.isDrafted(list)}</div>
+          </div>
         </div>
       </div>
     ) : null;
   };
 
   render() {
-    // console.log(this.props.info);
     const info = this.props.info;
-    // console.log(info);
-    // console.log(this.props.teams);
-    return <div>{this.renderInfo(info)}</div>;
+
+    return <div className="info-card">{this.renderInfo(info)}</div>;
   }
 }
 

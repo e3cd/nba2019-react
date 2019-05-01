@@ -10,8 +10,8 @@
   text-align: center;
   font-weight: 700;
   font-size: 3rem;
-  color: rgb(255, 255, 255);
-  background: rgb(43, 43, 43);
+  color: rgb(8, 8, 8);
+  background-image: url("./../img/header-background.jpg");
 }
 
 .nav-list {

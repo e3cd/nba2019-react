@@ -13,7 +13,6 @@ class PlayerProfile extends Component {
     this.props.fetchTeams();
   }
 
-  //use componentWillMOUNT TO store the stats prop
   componentWillMount() {
     this.props.fetchPlayerStats(this.props.match.params.id);
   }
