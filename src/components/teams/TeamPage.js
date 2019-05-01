@@ -5,7 +5,6 @@ import {
   fetchTeamLeaders,
   fetchTeams,
   fetchPlayers
-  // fetchTeamSchedule
 } from "./../../actions";
 import { endpointConstants } from "./../../api/endpoints";
 import TeamLeadersCard from "./teamPageCards/TeamLeadersCard";
@@ -18,7 +17,6 @@ import "./TeamPage.css";
 class TeamPage extends Component {
   componentDidMount() {
     this.props.fetchTeamLeaders(this.props.match.params.id);
-    // this.props.fetchTeamSchedule(this.props.match.params.id);
     this.props.fetchTeams();
     this.props.fetchTeamStats();
     this.props.fetchPlayers();
@@ -46,9 +44,6 @@ class TeamPage extends Component {
 
     const teamStats = this.props.teamStats;
 
-    // const teamSchedule = this.props.teamSchedule;
-    // console.log(teamSchedule);
-
     const allPlayers = this.props.players;
 
     //make a new array with fullName of each player
@@ -59,15 +54,11 @@ class TeamPage extends Component {
               (player.fullName = player.firstName + " " + player.lastName)
           )
         : null;
-    // console.log(teamStats);
-    // console.log(selectedTeam);
-    // console.log(allPlayers);
+
     const teamLeaders =
       this.props.teamLeaders !== undefined
         ? this.props.teamLeaders.pop()
         : null;
-
-    // console.log(teamLeaders);
 
     return (
       <div className="team-page-container">

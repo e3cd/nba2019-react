@@ -14,12 +14,7 @@ class TeamsList extends Component {
   renderTeamList = list => {
     return list
       ? list.map(team => {
-          // const teamName = this.getTeamName(player.teamId).fullName;
-
           const logoImg = endpointConstants.TEAM_LOGO(team.tricode);
-          // const playerImg = endpointConstants.FETCH_PLAYER_HEADSHOT(
-          //   player.personId
-          // );
 
           const teamImageStyle = {
             maxWidth: "100%",
@@ -44,7 +39,6 @@ class TeamsList extends Component {
   };
 
   render() {
-    // console.log(this.props.teams[0]);
     const teamList = this.props.teams[0];
     return (
       <div className="team-list-container">

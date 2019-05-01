@@ -5,10 +5,6 @@ import "./PlayerSearchButton.css";
 class PlayerSearchButton extends Component {
   state = { searchInput: "" };
 
-  // getPlayerStats = personId => {
-  //   this.props.fetchPlayerStats(personId);
-  // };
-
   onInputChange = event => {
     this.setState({ searchInput: event.target.value });
   };

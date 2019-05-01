@@ -4,7 +4,6 @@ import "./PlayerInfoCard.css";
 
 class PlayerInfoCard extends Component {
   getTeamName = teamId => {
-    // console.log(this.props.teams);
     return this.props.teams.find(team => team.teamId === teamId);
   };
 
@@ -104,10 +103,8 @@ class PlayerInfoCard extends Component {
   };
 
   render() {
-    // console.log(this.props.info);
     const info = this.props.info;
-    // console.log(info);
-    // console.log(this.props.teams);
+
     return <div className="info-card">{this.renderInfo(info)}</div>;
   }
 }

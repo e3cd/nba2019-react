@@ -10,7 +10,6 @@ class PlayerSearch extends Component {
   }
 
   render() {
-    // console.log(this.getNbaTeams(this.props.teams));
     return (
       <div>
         <PlayerSearchButton

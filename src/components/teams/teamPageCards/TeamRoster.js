@@ -6,7 +6,6 @@ import "./TeamRoster.css";
 
 class TeamRoster extends Component {
   getTeamName = teamId => {
-    // console.log(this.props.teams);
     return this.props.getTeams.find(team => team.teamId === teamId);
   };
 
@@ -17,7 +16,6 @@ class TeamRoster extends Component {
   renderRoster = roster => {
     return roster.map(player => {
       const playerStatsUrl = `players/${player.personId}`;
-      //   const teamLogo = this.getTeamName(player.teamId).tricode;
       const logoImg = this.props.teamImg;
       const playerImg = endpointConstants.FETCH_PLAYER_HEADSHOT(
         player.personId

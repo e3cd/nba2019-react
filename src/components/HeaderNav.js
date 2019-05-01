@@ -6,20 +6,6 @@ import "./HeaderNav.css";
 class HeaderNav extends Component {
   state = { value: 0 };
 
-  // componentDidCatch() {
-  //   this.activeTab();
-  // }
-
-  // activeTab() {
-  //   if (this.props.location.pathname === "/") {
-  //     return `btn-acti`;
-  //   } else if (this.props.location.pathname === "/Players") {
-  //     this.setState({ value: 1 });
-  //   } else if (this.props.location.pathname === "Teams") {
-  //     this.setState({ value: 2 });
-  //   }
-  // }
-
   render() {
     return (
       <nav className="nav">

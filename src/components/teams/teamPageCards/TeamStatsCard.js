@@ -7,11 +7,7 @@ export default class TeamStatsCard extends Component {
   };
 
   render() {
-    // console.log(this.props.teamStats.teams);
-    // console.log(this.props);
     const currentTeamStats = this.fetchStats(this.props.teamId);
-
-    // console.log(currentTeamStats);
 
     const stats = {
       ppg: "Points Per Game",
@@ -42,8 +38,6 @@ export default class TeamStatsCard extends Component {
 
           const fetchedStat = currentTeamStats[teamStat].avg;
           const fetchedRanking = currentTeamStats[teamStat].rank;
-          // console.log(statName);
-          // console.log(fetchedStat);
 
           return (
             <div className="team-stat-list" key={index}>

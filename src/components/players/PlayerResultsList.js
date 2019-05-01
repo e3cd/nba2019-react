@@ -6,7 +6,6 @@ import "./PlayerResultsList.css";
 
 class PlayerResultsList extends Component {
   getTeamName = teamId => {
-    // console.log(this.props.teams);
     return this.props.getTeams.find(team => team.teamId === teamId);
   };
 
@@ -58,8 +57,6 @@ class PlayerResultsList extends Component {
     //make new teams and player objects from actions to remove the SCRUB players and non-nba teams
 
     const players = this.props.getPlayers ? this.props.getPlayers : null;
-    // console.log(players);
-    // console.log(this.props.getTeams);
 
     //make a new array with fullName of each player
     const newPlayers = !players
@@ -69,8 +66,6 @@ class PlayerResultsList extends Component {
         );
 
     const searchTerm = this.props.searchTerm;
-    // console.log(players);
-    // console.log(this.props.getTeams);
 
     const search = (list, term) =>
       searchTerm.length < 2
@@ -81,7 +76,6 @@ class PlayerResultsList extends Component {
 
     //use players instead of newPlayers for some reason
     const filteredPlayers = search(players, searchTerm);
-    // console.log(filteredPlayers);
 
     return (
       <div className="results-container">
