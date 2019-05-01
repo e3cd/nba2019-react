@@ -109,13 +109,7 @@ class StandingsPage extends Component {
   render() {
     let east = this.renderStandings(this.props.east);
     let west = this.renderStandings(this.props.west);
-    console.log(this.state);
-    console.log(this.props.teams);
-    console.log(this.props.east);
-    console.log(this.props.west);
-
-    console.log(east);
-    console.log(west);
+    c;
 
     return (
       <div>

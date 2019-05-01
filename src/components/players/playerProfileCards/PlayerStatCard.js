@@ -153,9 +153,6 @@ class PlayerStatCard extends Component {
 
     const careerTotals = this.newCareerTotals(this.props.stats.careerSummary);
 
-    console.log(allSeasonStats);
-    console.log(careerTotals);
-
     const stats = {
       Year: "",
       Team: "Team",
