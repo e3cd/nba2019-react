@@ -67,10 +67,13 @@
   display: grid;
   align-content: center;
   grid-template-columns:
-    [rank-start] minmax(2rem, 4rem) [rank-end team-start] minmax(10rem, 1fr)
+    [rank-start] minmax(min-content, 2rem) [rank-end team-start] minmax(
+      20rem,
+      1fr
+    )
     [team-end category-start] repeat(
       5,
-      [col-start] minmax(2rem, 8rem) [col-end]
+      [col-start] minmax(2rem, 5rem) [col-end]
     )
     [category-end];
   grid-gap: 2rem;
@@ -91,4 +94,27 @@
 
 .standings-second {
   background: rgb(224, 224, 224);
+}
+
+/* Media queries */
+@media only screen and (max-width: 50em) {
+  .standings-container {
+    margin: 8rem 0;
+    border: none;
+    padding-top: 0;
+  }
+}
+
+@media only screen and (max-width: 37.5em) {
+  .btn,
+  .btn-active {
+    padding: 8px;
+    font-size: 1.75rem;
+  }
+}
+
+@media only screen and (max-width: 27em) {
+  .standings-container {
+    padding: 0;
+  }
 }

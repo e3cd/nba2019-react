@@ -44,7 +44,9 @@ class PlayerStatCard extends Component {
   };
 
   newCareerTotals = list => {
+    list.tpg = Math.round((list.tpm / list.gamesPlayed) * 100) / 100;
     list.topg = Math.round((list.turnovers / list.gamesPlayed) * 100) / 100;
+
     return list;
   };
 
@@ -69,9 +71,9 @@ class PlayerStatCard extends Component {
       "td3"
     ];
 
-    return list.map(team => {
+    return list.map((team, index) => {
       return (
-        <div>
+        <div key={index}>
           {stats.map((stat, index) => {
             return <div key={index}>{team[stat]}</div>;
           })}
@@ -97,7 +99,6 @@ class PlayerStatCard extends Component {
       "spg",
       "bpg",
       "topg",
-
       "dd2",
       "td3"
     ];
@@ -124,19 +125,17 @@ class PlayerStatCard extends Component {
       "fgp",
       "ftp",
       "tpp",
+      "tpg",
       "spg",
       "bpg",
       "topg",
-      "tpm",
       "dd2",
       "td3"
     ];
 
     return (
       <div className="career-total-list">
-        <div style={{ fontSize: "14px" }}>
-          <b>Career</b>
-        </div>
+        <div>Career</div>
         {stats.map((stat, index) => {
           return <div key={index}>{list[stat]}</div>;
         })}
@@ -178,7 +177,7 @@ class PlayerStatCard extends Component {
     };
 
     return (
-      <div className="stat-card">
+      <div className="stat-card" key={seasonStats}>
         <div className="stat-btn-container">
           <button
             className={this.state.season ? "stat-btn-active" : "stat-btn"}
@@ -193,7 +192,7 @@ class PlayerStatCard extends Component {
             Career
           </button>
         </div>
-        <div className="stat-list-container">
+        <div className="stat-list-container" key={careerTotals}>
           <div className={this.state.season ? "season-stat-list" : null}>
             <div
               style={{ fontWeight: "700" }}
@@ -213,7 +212,7 @@ class PlayerStatCard extends Component {
                 {this.renderSeasonStats(seasonStats)}
               </div>
             ) : (
-              <div>
+              <div key={allSeasonStats}>
                 {[
                   this.renderCareerStats(allSeasonStats),
                   this.renderCareerTotals(careerTotals)
