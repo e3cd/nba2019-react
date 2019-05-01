@@ -1,4 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React with Redux app that displays the stats for the teams and players of 2018-2019 nba season using the NBA API
+
+## Built using:
+
+- JavaScript(ES2016)
+- React
+- Redux
+- CSS3
+- HTML5
 
 ## Available Scripts
 
