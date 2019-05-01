@@ -71,9 +71,9 @@ class PlayerStatCard extends Component {
       "td3"
     ];
 
-    return list.map(team => {
+    return list.map((team, index) => {
       return (
-        <div>
+        <div key={index}>
           {stats.map((stat, index) => {
             return <div key={index}>{team[stat]}</div>;
           })}
@@ -177,7 +177,7 @@ class PlayerStatCard extends Component {
     };
 
     return (
-      <div className="stat-card">
+      <div className="stat-card" key={seasonStats}>
         <div className="stat-btn-container">
           <button
             className={this.state.season ? "stat-btn-active" : "stat-btn"}
@@ -192,7 +192,7 @@ class PlayerStatCard extends Component {
             Career
           </button>
         </div>
-        <div className="stat-list-container">
+        <div className="stat-list-container" key={careerTotals}>
           <div className={this.state.season ? "season-stat-list" : null}>
             <div
               style={{ fontWeight: "700" }}
@@ -212,7 +212,7 @@ class PlayerStatCard extends Component {
                 {this.renderSeasonStats(seasonStats)}
               </div>
             ) : (
-              <div>
+              <div key={allSeasonStats}>
                 {[
                   this.renderCareerStats(allSeasonStats),
                   this.renderCareerTotals(careerTotals)

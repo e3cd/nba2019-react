@@ -36,7 +36,7 @@ export default class TeamStatsCard extends Component {
             <h3>Rank</h3>
           </div>
         </div>
-        {Object.entries(stats).map(stat => {
+        {Object.entries(stats).map((stat, index) => {
           const teamStat = stat[0];
           const statName = stat[1];
 
@@ -46,7 +46,7 @@ export default class TeamStatsCard extends Component {
           // console.log(fetchedStat);
 
           return (
-            <div className="team-stat-list">
+            <div className="team-stat-list" key={index}>
               <div>
                 <h3>{statName}</h3>
               </div>

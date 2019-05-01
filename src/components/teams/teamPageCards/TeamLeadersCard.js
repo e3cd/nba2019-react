@@ -12,12 +12,6 @@ class TeamLeadersCard extends Component {
 
   render() {
     const teamStatLeaders = this.props.teamLeaders;
-    console.log(_.isEmpty(teamStatLeaders.ppg));
-    // const players = this.props.allPlayers;
-    // console.log(players);
-
-    // console.log(this.getPlayerName(teamLeaders.ppg[0].personId).fullName);
-    // console.log(teamLeaders.ppg[0].value);
 
     const stats = ["ppg", "trpg", "apg", "spg", "bpg"];
 
@@ -26,8 +20,6 @@ class TeamLeadersCard extends Component {
         <h1>Stat Leaders</h1>
         {!_.isEmpty(teamStatLeaders.ppg)
           ? stats.map(stat => {
-              //   console.log(teamLeaders[stat][0].value);
-              //   console.log(stat);
               const leadPlayer = this.getPlayerName(
                 teamStatLeaders[stat][0].personId
               ).fullName;

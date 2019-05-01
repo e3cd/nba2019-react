@@ -32,7 +32,7 @@ class TeamScheduleCard extends Component {
           ? regularSchedule
               .slice(regularSchedule.length - 8)
               .reverse()
-              .map(game => {
+              .map((game, index) => {
                 const { hTeam, vTeam, isHomeTeam, homeStartDate } = game;
                 const { teamId } = this.props;
                 const homeScore = Math.floor(hTeam.score);
@@ -79,8 +79,8 @@ class TeamScheduleCard extends Component {
                 const venue = hTeam.teamId === teamId ? "vs" : "@";
 
                 return (
-                  <div className="team-schedule-list">
-                    <div>{gameDate}</div>
+                  <div className="team-schedule-list" key={index}>
+                    <div key={gameDate}>{gameDate}</div>
                     <div>
                       <img
                         src={oppLogo}

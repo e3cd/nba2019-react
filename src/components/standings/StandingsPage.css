@@ -68,7 +68,7 @@
   align-content: center;
   grid-template-columns:
     [rank-start] minmax(min-content, 2rem) [rank-end team-start] minmax(
-      10rem,
+      20rem,
       1fr
     )
     [team-end category-start] repeat(
