@@ -2,7 +2,7 @@
   "name": "react-nba",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://crossorigin.me/https://data.nba.net",
+  "proxy": "https://data.nba.net",
   "dependencies": {
     "axios": "^0.18.0",
     "http-proxy-middleware": "^0.19.1",

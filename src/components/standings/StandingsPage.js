@@ -109,7 +109,6 @@ class StandingsPage extends Component {
   render() {
     let east = this.renderStandings(this.props.east);
     let west = this.renderStandings(this.props.west);
-    c;
 
     return (
       <div>
