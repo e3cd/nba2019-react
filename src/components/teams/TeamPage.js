@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import _ from "lodash";
 import {
   fetchTeamStats,
   fetchTeamLeaders,
@@ -20,6 +21,13 @@ class TeamPage extends Component {
     this.props.fetchTeams();
     this.props.fetchTeamStats();
     this.props.fetchPlayers();
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log(prevProps);
+    if (!_.isEqual(prevProps, this.props)) {
+      this.props.fetchTeamLeaders(this.props.match.params.id);
+    }
   }
 
   getTeam = teamId => {
