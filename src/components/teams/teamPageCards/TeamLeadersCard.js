@@ -14,7 +14,7 @@ class TeamLeadersCard extends Component {
     const teamStatLeaders = this.props.teamLeaders;
 
     const stats = ["ppg", "trpg", "apg", "spg", "bpg"];
-
+    console.log(this.props.children);
     return (
       <div className="team-leaders-card">
         <h1>Stat Leaders</h1>

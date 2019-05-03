@@ -22,10 +22,6 @@ class TeamPage extends Component {
     this.props.fetchPlayers();
   }
 
-  componentDidUpdate() {
-    this.props.fetchTeamLeaders(this.props.match.params.id);
-  }
-
   getTeam = teamId => {
     return this.props.teams !== undefined
       ? this.props.teams.find(team => team.teamId === teamId)
