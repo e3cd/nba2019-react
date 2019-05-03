@@ -13,10 +13,6 @@ class PlayerProfile extends Component {
     this.props.fetchTeams();
   }
 
-  componentWillMount() {
-    this.props.fetchPlayerStats(this.props.match.params.id);
-  }
-
   getPlayerStats = playerId => {
     return !this.props.players ? null : this.props.fetchPlayerStats(playerId);
   };

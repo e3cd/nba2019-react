@@ -22,7 +22,7 @@ class TeamPage extends Component {
     this.props.fetchPlayers();
   }
 
-  componentWillMount() {
+  componentDidUpdate() {
     this.props.fetchTeamLeaders(this.props.match.params.id);
   }
 

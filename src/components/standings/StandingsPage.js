@@ -18,9 +18,16 @@ class StandingsPage extends Component {
     this.props.fetchWestStandings();
   }
 
+  componentDidUpdate() {
+    this.props.fetchTeams();
+    this.props.fetchEastStandings();
+  }
+
   getTeamName = teamId => {
     // console.log(this.props.teams);
-    return this.props.teams.find(team => team.teamId === teamId);
+    return this.props.teams !== undefined
+      ? this.props.teams.find(team => team.teamId === teamId)
+      : null;
   };
 
   toggleWest = () => {
