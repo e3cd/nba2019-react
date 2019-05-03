@@ -56,3 +56,9 @@ body {
     min-height: 100vh;
   }
 }
+
+@media only screen and (max-width: 37.5em) {
+  html {
+    font-size: 37.5%;
+  }
+}
