@@ -1,6 +1,6 @@
 React with Redux app that displays the stats for the teams and players of 2018-2019 nba season using the NBA API
 
-[Link to App](https://react-nba-2019.herokuapp.com)
+[Link to App](http://reactnba-app.s3-website-ap-southeast-2.amazonaws.com/)
 
 ## Built using:
 

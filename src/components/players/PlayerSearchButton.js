@@ -10,8 +10,6 @@ class PlayerSearchButton extends Component {
   };
 
   render() {
-    console.log(this.props.getPlayers);
-    console.log(this.state.term);
     return (
       <div>
         <div className="search-bar-container">

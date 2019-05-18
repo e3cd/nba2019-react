@@ -24,7 +24,6 @@ class TeamPage extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(prevProps);
     if (!_.isEqual(prevProps, this.props)) {
       this.props.fetchTeamLeaders(this.props.match.params.id);
     }

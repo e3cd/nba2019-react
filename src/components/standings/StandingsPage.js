@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./StandingsPage.css";
 import { endpointConstants } from "./../../api/endpoints";
-
 import {
   fetchTeams,
   fetchEastStandings,
@@ -16,11 +15,6 @@ class StandingsPage extends Component {
     this.props.fetchTeams();
     this.props.fetchEastStandings();
     this.props.fetchWestStandings();
-  }
-
-  componentDidUpdate() {
-    this.props.fetchTeams();
-    this.props.fetchEastStandings();
   }
 
   getTeamName = teamId => {
