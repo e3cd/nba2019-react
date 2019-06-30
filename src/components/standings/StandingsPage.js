@@ -18,10 +18,9 @@ class StandingsPage extends Component {
   }
 
   getTeamName = teamId => {
-    // console.log(this.props.teams);
-    return this.props.teams !== undefined
-      ? this.props.teams.find(team => team.teamId === teamId)
-      : null;
+    if (this.props.teams) {
+      return this.props.teams.find(team => team.teamId === teamId);
+    }
   };
 
   toggleWest = () => {
@@ -64,10 +63,15 @@ class StandingsPage extends Component {
             <b>Streak</b>
           </label>
         </li>
-        {conference
+        {conference && this.props.teams
           ? conference.map((team, ind) => {
-              let teamLogo = this.getTeamName(team.teamId).tricode;
-              let imgSrc = endpointConstants.TEAM_LOGO(teamLogo);
+              console.log(this.props.teams);
+              console.log(team);
+
+              const teamLogo =
+                team.teamId && this.getTeamName(team.teamId).tricode;
+              console.log(teamLogo);
+              const imgSrc = endpointConstants.TEAM_LOGO(teamLogo);
 
               return (
                 <li

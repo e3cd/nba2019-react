@@ -37,9 +37,9 @@ class PlayerProfile extends Component {
     return (
       <div className="profile-container">
         <PlayerInfoCard info={searchedPlayerProfile} teams={listOfTeams} />
-        {lastPlayerStats !== undefined ? (
+        {lastPlayerStats && (
           <PlayerStatCard stats={lastPlayerStats} teams={listOfTeams} />
-        ) : null}
+        )}
       </div>
     );
   }

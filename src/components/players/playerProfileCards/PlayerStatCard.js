@@ -19,12 +19,14 @@ class PlayerStatCard extends Component {
   };
 
   getTeamName = teamId => {
-    return this.props.teams.find(team => team.teamId === teamId);
+    if (this.props.teams) {
+      return this.props.teams.find(team => team.teamId === teamId);
+    }
   };
 
   newSeasonStats = list => {
     return list.map(team => {
-      team.tricode = this.getTeamName(team.teamId).tricode;
+      team.tricode = team.teamId && this.getTeamName(team.teamId).tricode;
       team.tpg = Math.round((team.tpm / team.gamesPlayed) * 100) / 100;
       return team;
     });
@@ -195,7 +197,7 @@ class PlayerStatCard extends Component {
               style={{ fontWeight: "700" }}
               className={!this.state.season ? "career-stat-list" : null}
             >
-              {this.state.season
+              {this.state.season && this.props.stats
                 ? Object.values(stats).map((stat, index) => {
                     return <div key={index}>{stat}</div>;
                   })
@@ -204,7 +206,7 @@ class PlayerStatCard extends Component {
                   })}
             </div>
 
-            {this.state.season ? (
+            {this.state.season && this.props.stats ? (
               <div className="season-stat-value">
                 {this.renderSeasonStats(seasonStats)}
               </div>
